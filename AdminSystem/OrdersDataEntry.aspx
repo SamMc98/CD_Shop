@@ -7,7 +7,8 @@
     <title></title>
 </head>
 <body>
-    hello
+    This is the Orders Data Entry Page. 
+    When run, the webpage will open on this page for the time being.
     <form id="form1" runat="server">
         <div>
         </div>
