@@ -8,7 +8,7 @@
 </head>
 <body>
     This is the Orders Data Entry Page. 
-    When run, the webpage will open on this page for the time being.
+    When run, the webpage will open on this page for the time being. Does it work if I rename folders?
     <form id="form1" runat="server">
         <div>
         </div>
