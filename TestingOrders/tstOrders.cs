@@ -36,9 +36,9 @@ namespace TestingOrders
             //Create some test data to assign to the property
             DateTime TestData = DateTime.Now.Date;
             //Assign the data to the property
-            Order.CheckoutDate = TestData;
+            Order.DeliveryDate = TestData;
             //Test to see if the two values are the same
-            Assert.AreEqual(Order.CheckoutDate, TestData);
+            Assert.AreEqual(Order.DeliveryDate, TestData);
         }
 
         [TestMethod]
