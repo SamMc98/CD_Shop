@@ -55,19 +55,6 @@ namespace TestingOrders
         }
 
         [TestMethod]
-        public void BuyerNameOK()
-        {
-            //Create an instance of the class we will create
-            clsOrders Order = new clsOrders();
-            //Create some test data to assign to the property
-            String TestData = "Sam McPhee";
-            //Assign the data to the property
-            Order.BuyerName = TestData;
-            //Test to see if the two values are the same
-            Assert.AreEqual(Order.BuyerName, TestData);
-        }
-
-        [TestMethod]
         public void OrderIDOK()
         {
             //Create an instance of the class we will create
