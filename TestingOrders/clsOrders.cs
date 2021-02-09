@@ -8,7 +8,6 @@ namespace TestingOrders
         public DateTime CheckoutDate { get; internal set; }
         public DateTime DeliveryDate {get; internal set;}
         public string ShippingAddress { get; internal set; }
-        public string BuyerName { get; internal set; }
         public int OrderID { get; internal set; }
         public int OrderLineID { get; internal set; }
         public bool OrderLineCheckout { get; internal set; }
