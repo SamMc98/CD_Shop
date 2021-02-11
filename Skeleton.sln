@@ -20,6 +20,7 @@ EndProject
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "AdminSystem", "AdminSystem\", "{452F0A25-A23F-4FED-90A2-BDC9E42CEA1C}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.6.1"
+		ProjectReferences = "{cdeab9d5-740f-43a5-953f-fc14371effac}|TestingStaff.dll;{E8BB51CE-8325-4BD3-BDFA-B013EEB87B2A}|ClassLibrary.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/localhost_54436"
 		Debug.AspNetCompiler.PhysicalPath = "AdminSystem\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_54436\"
