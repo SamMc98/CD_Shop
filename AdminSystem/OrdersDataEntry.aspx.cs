@@ -23,8 +23,8 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Order.DeliveryDate = DateTime.Parse(txtDeliveryDate.Text);
         //Capture the order placed
         //Order.OrderPlaced = Boolean.Parse(ChkOrderPlaced.Text);
-        //Capture the orderLine checkout
-        //Order.OrderLineCheckout = Boolean.Parse(ChkOrderLineCheckout.Text);
+        //display the active state
+       // ChkOrderLineCheckout.Checked = Order.ThisclsOrder.Active;
         //Capture the checkout date
         Order.CheckoutDate = DateTime.Parse(txtCheckoutDate.Text);
         //Capture the orderLine total
