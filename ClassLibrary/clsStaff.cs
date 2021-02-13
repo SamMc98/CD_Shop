@@ -9,5 +9,10 @@ namespace ClassLibrary
         public int StaffID { get; set; }
         public string StaffFullName { get; set; }
         public double StaffYearlySalary { get; set; }
+
+        public bool Find(int staffID)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

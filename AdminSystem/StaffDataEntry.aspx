@@ -14,7 +14,7 @@
         <asp:TextBox ID="txtStaffID" runat="server" style="margin-left: 13px"></asp:TextBox>
         <p>
             <asp:Label ID="lblFullName" runat="server" Text="Full Name" width="48px"></asp:Label>
-            <asp:TextBox ID="txtFullName" runat="server" style="margin-left: 12px"></asp:TextBox>
+            <asp:TextBox ID="txtFullName" runat="server" style="margin-left: 12px" ></asp:TextBox>
         </p>
         <p>
             <asp:Label ID="lblDateOfBirth" runat="server" Text="Date of Birth" width="48px"></asp:Label>
