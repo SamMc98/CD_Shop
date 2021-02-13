@@ -14,7 +14,11 @@ public partial class _1Viewer : System.Web.UI.Page
         clsStaff aStaff = new clsStaff();
         // get the data from the session object
         aStaff = (clsStaff)Session["aStaff"];
-        //display the house number for this entry
+        //display the staff details for this entry
+        Response.Write(aStaff.StaffID);
         Response.Write(aStaff.StaffFullName);
+        Response.Write(aStaff.StaffDateOfBirth);
+        Response.Write(aStaff.StaffYearlySalary);
+      
     }
 }
