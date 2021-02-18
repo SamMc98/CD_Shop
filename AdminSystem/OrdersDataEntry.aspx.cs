@@ -12,7 +12,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
 
     }
-
+    //Method for OK button
     protected void btnOk_Click(object sender, EventArgs e)
     {
         //Create a new instance of clsOrders
