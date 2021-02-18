@@ -13,5 +13,5 @@ namespace ClassLibrary
         public bool OrderLineCheckout { get; set; }
         public int OrderLineTotal { get; set; }
         public double TotalCost { get; set; }
-        }
     }
+}
