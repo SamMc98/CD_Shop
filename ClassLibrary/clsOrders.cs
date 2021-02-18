@@ -1,7 +1,9 @@
-﻿using System;
+﻿using System;
+
 namespace ClassLibrary
 {
-    public class clsOrders
+    public class clsOrders
+
     {
         private Int32 mOrderID;
         private DateTime mDeliveryDate;
@@ -22,7 +24,8 @@ namespace ClassLibrary
             {
                 mOrderPlaced = value;
             }
-        }        public DateTime CheckoutDate
+        }
+        public DateTime CheckoutDate
         {
             get
             {
@@ -123,5 +126,43 @@ namespace ClassLibrary
             mOrderLineID = 2;
             return true;
         }
+        /*public bool Find(int OrderID)
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@OrderID", OrderID);
+            DB.Execute("sproc_tblOrderProcessing_FilterID");
+            if (DB.Count == 1)
+            {
+                mOrderID = Convert.ToInt32(DB.DataTable.Rows[0]["OrderID"]);
+                mShippingAddress = Convert.ToString(DB.DataTable.Rows[0]["ShippingAddress"]);
+                mDeliveryDate = Convert.ToDateTime(DB.DataTable.Rows[0]["DeliveryDate"]);
+                mOrderPlaced = Convert.ToBoolean(DB.DataTable.Rows[0]["OrderPlaced"]);
+
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public bool Find2(int OrderLineID)
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@OrderLineID", OrderLineID);
+            DB.Execute("sproc_tblOrderLineProcessing_FilterID");
+            if (DB.Count == 1)
+            { 
+                mOrderLineCheckout = Convert.ToBoolean(DB.DataTable.Rows[0]["OrderLineCheckout"]);
+                mCheckoutDate = Convert.ToDateTime(DB.DataTable.Rows[0]["CheckoutDate"]);
+                mOrderLineTotal = Convert.ToInt32(DB.DataTable.Rows[0]["OrderLineTotal"]);
+                mTotalCost = Convert.ToDouble(DB.DataTable.Rows[0]["TotalCost"]);
+
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }*/
     }
 }
