@@ -17,6 +17,6 @@ public partial class _1Viewer : System.Web.UI.Page
         //Display the house number for this entry
         Response.Write(Order.ShippingAddress);
         Response.Write(Order.DeliveryDate);
-        //Response.Write(Order.OrderLineCheckout + " " + Order.CheckoutDate + " " + Order.OrderLineTotal + " " + Order.TotalCost);
+        Response.Write(Order.OrderLineCheckout + " " + Order.CheckoutDate + " " + Order.OrderLineTotal + " " + Order.TotalCost);
     }
 }

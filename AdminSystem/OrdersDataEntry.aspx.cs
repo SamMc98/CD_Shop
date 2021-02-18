@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-//using System.Linq;
+using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -12,6 +12,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
 
     }
+
     protected void btnOk_Click(object sender, EventArgs e)
     {
         //Create a new instance of clsOrders
@@ -23,7 +24,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //Capture the order placed
         //Order.OrderPlaced = Boolean.Parse(ChkOrderPlaced.Text);
         //display the active state
-        // ChkOrderLineCheckout.Checked = Order.ThisclsOrder.Active;
+       // ChkOrderLineCheckout.Checked = Order.ThisclsOrder.Active;
         //Capture the checkout date
         Order.CheckoutDate = DateTime.Parse(txtCheckoutDate.Text);
         //Capture the orderLine total
@@ -35,5 +36,4 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //Navigate to the viewer page
         Response.Redirect("OrdersViewer.aspx");
     }
-
 }
