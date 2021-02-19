@@ -84,7 +84,7 @@ namespace ClassLibrary
             mManager = true;
             mFullName = "Test Name";
             mStaffSalary = 10000.50;
-            // always return true
+            // always return true (test data)
             return true;
         }
     }
