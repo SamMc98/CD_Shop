@@ -9,11 +9,6 @@ namespace ClassLibrary
         private DateTime mDeliveryDate;
         private String mShippingAddress;
         private Boolean mOrderPlaced;
-        private DateTime mCheckoutDate;
-        private Int32 mOrderLineTotal;
-        private double mTotalCost;
-        private Int32 mOrderLineID;
-        private Boolean mOrderLineCheckout;
 
         public bool OrderPlaced {
             get
@@ -23,17 +18,6 @@ namespace ClassLibrary
             set
             {
                 mOrderPlaced = value;
-            }
-        }
-        public DateTime CheckoutDate
-        {
-            get
-            {
-                return mCheckoutDate;
-            }
-            set
-            {
-                mCheckoutDate = value;
             }
         }
         public DateTime DeliveryDate
@@ -69,50 +53,8 @@ namespace ClassLibrary
                 mOrderID = value;
             }
         }
-        public int OrderLineID {
-            get
-            {
-                return mOrderLineID;
-            }
-            set
-            {
-                mOrderLineID = value;
-            }
-        }
-        public bool OrderLineCheckout
-        {
-            get
-            {
-                return mOrderLineCheckout;
-            }
-            set
-            {
-                mOrderLineCheckout = value;
-            }
-        }
-        public int OrderLineTotal
-        {
-            get
-            {
-                return mOrderLineTotal;
-            }
-            set
-            {
-                mOrderLineTotal = value;
-            }
-        }
-        public double TotalCost
-        {
-            get
-            {
-                return mTotalCost;
-            }
-            set
-            {
-                mTotalCost = value;
-            }
-        }
-
+        
+        /*
         public bool Find(int OrderID)
         {
             mOrderID = 1;
@@ -125,8 +67,8 @@ namespace ClassLibrary
             mOrderLineCheckout = true;
             mOrderLineID = 2;
             return true;
-        }
-        /*public bool Find(int OrderID)
+        }*/
+        public bool Find(int OrderID)
         {
             clsDataConnection DB = new clsDataConnection();
             DB.AddParameter("@OrderID", OrderID);
@@ -145,24 +87,5 @@ namespace ClassLibrary
                 return false;
             }
         }
-        public bool Find2(int OrderLineID)
-        {
-            clsDataConnection DB = new clsDataConnection();
-            DB.AddParameter("@OrderLineID", OrderLineID);
-            DB.Execute("sproc_tblOrderLineProcessing_FilterID");
-            if (DB.Count == 1)
-            { 
-                mOrderLineCheckout = Convert.ToBoolean(DB.DataTable.Rows[0]["OrderLineCheckout"]);
-                mCheckoutDate = Convert.ToDateTime(DB.DataTable.Rows[0]["CheckoutDate"]);
-                mOrderLineTotal = Convert.ToInt32(DB.DataTable.Rows[0]["OrderLineTotal"]);
-                mTotalCost = Convert.ToDouble(DB.DataTable.Rows[0]["TotalCost"]);
-
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }*/
     }
 }
