@@ -26,11 +26,11 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //display the active state
        // ChkOrderLineCheckout.Checked = Order.ThisclsOrder.Active;
         //Capture the checkout date
-        Order.CheckoutDate = DateTime.Parse(txtCheckoutDate.Text);
+      //  Order.CheckoutDate = DateTime.Parse(txtCheckoutDate.Text);
         //Capture the orderLine total
-        Order.OrderLineTotal = int.Parse(txtOrderLineTotal.Text);
+       // Order.OrderLineTotal = int.Parse(txtOrderLineTotal.Text);
         //Capture the total cost
-        Order.TotalCost = double.Parse(txtTotalCost.Text);
+        //Order.TotalCost = double.Parse(txtTotalCost.Text);
         //Store the shipping address in the session object
         Session["Order"] = Order;
         //Navigate to the viewer page
