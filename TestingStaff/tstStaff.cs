@@ -86,7 +86,7 @@ namespace Testing3
             Assert.AreEqual(Staff.StaffYearlySalary, TestData);
         }
 
-
+        [TestMethod]
         public void FindMethodOK()
         {
             //create an instance of the class we want to create
@@ -94,6 +94,52 @@ namespace Testing3
 
             // boolean variable to store the results of the validation
             bool Found = false;
+            // create some test data to use with the method
+            Int32 StaffID = 1;
+            // invoke the method
+            Found = aStaff.Find(StaffID);
+            // test to see if the result is true
+            Assert.IsTrue(Found);
+        }
+
+        [TestMethod]
+        public void TestStaffIdNoFound()
+        {
+            //create an instance of the class we want to create
+            clsStaff aStaff = new clsStaff();
+
+            // bool variable to store the result of the search
+            Boolean Found = false;
+
+            // bool variable to store the result of the search if data is OK
+            Boolean OK = true;
+
+            //create some test data to use with the method
+            Int32 StaffID = 1;
+
+            //invoke the method
+            Found = aStaff.Find(StaffID);
+
+            // check the staffID
+            if(aStaff.StaffID != 1)
+            {
+                OK = false;
+            }
+            // test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestDataAddedFound()
+        {
+            //create an instance of the class we want to create
+            clsStaff aStaff = new clsStaff();
+
+            // bool var to store the result of the search
+            Boolean Found = false;
+
+            // bool var to record if data is OK (Assume it is)
+            Boolean OK = true;
 
             // create some test data to use with the method
             Int32 StaffID = 1;
@@ -101,8 +147,94 @@ namespace Testing3
             // invoke the method
             Found = aStaff.Find(StaffID);
 
-            //test to see if the result is true
-            Assert.IsTrue(Found);
+            if (aStaff.StaffDateOfBirth != Convert.ToDateTime("16/09/2015"))
+            {
+                OK = false;
+            }
+            // test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestIfManager()
+        {
+            // create an isntance of the class we want to create
+            clsStaff aStaff = new clsStaff();
+
+            // bool var to store the result of the search
+            Boolean Found = false;
+
+            // bool var to record if the data is OK (assume it is)
+            Boolean OK = true;
+
+            //create some test data to use with the method
+            Int32 StaffID = 1;
+
+            // invoke the method
+            Found = aStaff.Find(StaffID);
+
+            if (aStaff.Manager != true)
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestFullNameFound()
+        {
+            // create an instance of the class we want to create
+            clsStaff aStaff = new clsStaff();
+
+            // bool var to store teh result of the search
+            Boolean Found = false;
+
+            // bool var to record if the data is OK
+            Boolean OK = true;
+
+            // create some test data to use with the method
+            Int32 StaffID = 1;
+
+            // invoke the method
+            Found = aStaff.Find(StaffID);
+
+            // check the staff name
+            if (aStaff.StaffFullName != "Test Name")
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestStaffSalary()
+        {
+            //create an instance of the class we want to create
+            clsStaff aStaff = new clsStaff();
+
+            // bool var to store the result of the search
+            Boolean Found = false;
+
+            //bool var to store if the record data is OK (assume it is)
+            Boolean OK = true;
+
+            // create some test data to use with the method
+            Int32 StaffID = 1;
+
+            // invoke the method
+            Found = aStaff.Find(StaffID);
+
+            // check the property
+            if (aStaff.StaffYearlySalary != 10000.50)
+            {
+                OK = false;
+            }
+
+            //test that the result is correct
+            Assert.IsTrue(OK);
         }
     }
 }
