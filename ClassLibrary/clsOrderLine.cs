@@ -3,6 +3,7 @@ namespace ClassLibrary
 {
     public class clsOrderLine
     {
+        //properties
         private DateTime mCheckoutDate;
         private Int32 mOrderLineTotal;
         private double mTotalCost;
