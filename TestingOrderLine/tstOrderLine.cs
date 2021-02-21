@@ -7,6 +7,10 @@ namespace TestingOrderLine
     [TestClass]
     public class tstOrderLine
     {
+        string checkoutDate = DateTime.Now.Date.ToString();
+        string orderLineTotal = "10";
+        string totalCost = "9.99";
+
         [TestMethod]
         public void InstanceOK()
         {
@@ -99,7 +103,7 @@ namespace TestingOrderLine
               Boolean OK = true;
               Int32 OrderLineID = 1;
               Found = OrderLine.Find(OrderLineID);
-              if (OrderLine.CheckoutDate != Convert.ToDateTime("18/02/2021"))
+              if (OrderLine.CheckoutDate != Convert.ToDateTime("18/01/2021"))
               {
                   OK = false;
               }
@@ -163,5 +167,12 @@ namespace TestingOrderLine
              }
              Assert.IsTrue(OK);
          }
+        public void ValidMethodOK()
+        {
+            clsOrderLine OrderLine = new clsOrderLine();
+            String Error = "";
+            Error = OrderLine.Valid(checkoutDate, orderLineTotal, totalCost);
+            Assert.AreEqual(Error, "");
+        }
     }
 }

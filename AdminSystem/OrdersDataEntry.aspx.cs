@@ -17,23 +17,38 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
         //Create a new instance of clsOrders
         clsOrders Order = new clsOrders();
+        //Capture the order ID
+        Order.OrderID = Int32.Parse(txtOrderID.Text);
         //Capture the shipping address
         Order.ShippingAddress = txtShippingAddress.Text;
         //Capture the delivery date
         Order.DeliveryDate = DateTime.Parse(txtDeliveryDate.Text);
         //Capture the order placed
-        //Order.OrderPlaced = Boolean.Parse(ChkOrderPlaced.Text);
-        //display the active state
-       // ChkOrderLineCheckout.Checked = Order.ThisclsOrder.Active;
-        //Capture the checkout date
-      //  Order.CheckoutDate = DateTime.Parse(txtCheckoutDate.Text);
-        //Capture the orderLine total
-       // Order.OrderLineTotal = int.Parse(txtOrderLineTotal.Text);
-        //Capture the total cost
-        //Order.TotalCost = double.Parse(txtTotalCost.Text);
+        if (ChkOrderPlaced.Checked)
+        {
+            Order.OrderPlaced = true;
+        }
+        else
+        {
+            Order.OrderPlaced = false;
+        }
         //Store the shipping address in the session object
         Session["Order"] = Order;
         //Navigate to the viewer page
         Response.Redirect("OrdersViewer.aspx");
+    }
+
+    protected void btnFind_Click(object sender, EventArgs e)
+    {
+        clsOrders Order = new clsOrders();
+        Int32 OrderID;
+        Boolean Found = false;
+        OrderID = Convert.ToInt32(txtOrderID.Text);
+        Found = Order.Find(OrderID);
+        if (Found == true)
+        {
+            txtShippingAddress.Text = Order.ShippingAddress;
+            txtDeliveryDate.Text = Order.DeliveryDate.ToString();
+        }
     }
 }

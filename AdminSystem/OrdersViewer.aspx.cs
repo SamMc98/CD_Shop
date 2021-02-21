@@ -14,9 +14,10 @@ public partial class _1Viewer : System.Web.UI.Page
         clsOrders Order = new clsOrders();
         //Get the data from the session object
         Order = (clsOrders)Session["Order"];
-        //Display the house number for this entry
-        Response.Write(Order.ShippingAddress);
-        Response.Write(Order.DeliveryDate);
-      //  Response.Write(Order.OrderLineCheckout + " " + Order.CheckoutDate + " " + Order.OrderLineTotal + " " + Order.TotalCost);
+        //Display the data entered for these entries
+        Response.Write(Order.OrderID + "<br>");
+        Response.Write(Order.ShippingAddress + "<br>");
+        Response.Write(Order.DeliveryDate + "<br>");
+        Response.Write(Order.OrderPlaced + "<br>");
     }
 }

@@ -7,6 +7,9 @@ namespace TestingOrders
     [TestClass]
     public class tstOrders
     {
+        string shippingAddress = "5 Random Street";
+        string deliveryDate = DateTime.Now.Date.ToString();
+
         [TestMethod]
         public void InstanceOK()
         {
@@ -101,7 +104,7 @@ namespace TestingOrders
             Boolean OK = true;
             Int32 OrderID = 1;
             Found = Order.Find(OrderID);
-            if (Order.DeliveryDate != Convert.ToDateTime("16/09/2015"))
+            if (Order.DeliveryDate != Convert.ToDateTime("24/01/2021"))
             {
                 OK = false;
             }
@@ -136,6 +139,14 @@ namespace TestingOrders
                 OK = false;
             }
             Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void ValidMethodOK()
+        {
+            clsOrders Order = new clsOrders();
+            String Error = "";
+            Error = Order.Valid(shippingAddress, deliveryDate);
+            Assert.AreEqual(Error, "");
         }
     }
 }
