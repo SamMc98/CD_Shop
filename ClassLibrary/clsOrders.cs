@@ -54,20 +54,6 @@ namespace ClassLibrary
             }
         }
         
-        /*
-        public bool Find(int OrderID)
-        {
-            mOrderID = 1;
-            mDeliveryDate = Convert.ToDateTime("16/09/2015");
-            mShippingAddress = "5 Test Street";
-            mOrderPlaced = true;
-            mCheckoutDate = Convert.ToDateTime("18/02/2021");
-            mOrderLineTotal = 10;
-            mTotalCost = 9.99;
-            mOrderLineCheckout = true;
-            mOrderLineID = 2;
-            return true;
-        }*/
         public bool Find(int OrderID)
         {
             clsDataConnection DB = new clsDataConnection();
@@ -86,6 +72,12 @@ namespace ClassLibrary
             {
                 return false;
             }
+        }
+
+        public string Valid(string shippingAddress, string deliveryDate)
+        {
+
+            return "";
         }
     }
 }
