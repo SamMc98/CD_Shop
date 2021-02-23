@@ -90,7 +90,37 @@ namespace ClassLibrary
 
         public string Valid(string checkoutDate, string orderLineTotal, string totalCost)
         {
-            return "";
+            String Error = "";
+            DateTime DateTemp;
+            if (orderLineTotal.Length == 0)
+            {
+                Error = Error + "The order line total may not be blank : ";
+            }
+            if (orderLineTotal.Length > 50)
+            {
+                Error = Error + "The order line total must be less than 50 characters : ";
+            }
+            try
+            {
+                DateTemp = Convert.ToDateTime(checkoutDate);
+                if (DateTemp < DateTime.Now.Date)
+                {
+                    //record the error
+                    Error = Error + "The date cannot be in the past : ";
+                }
+                if (DateTemp > DateTime.Now.Date)
+                {
+                    //record the error
+                    Error = Error + "The date cannot be in the future : ";
+                }
+            }
+            catch
+            {
+                //record the error
+                Error = Error + "The date was not a valid date : ";
+            }
+
+            return Error;
         }
     }
 }
