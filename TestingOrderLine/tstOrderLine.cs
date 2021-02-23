@@ -7,9 +7,10 @@ namespace TestingOrderLine
     [TestClass]
     public class tstOrderLine
     {
-        string checkoutDate = DateTime.Now.Date.ToString();
-        string orderLineTotal = "10";
-        string totalCost = "9.99";
+        //Good test data
+        string CheckoutDate = DateTime.Now.Date.ToString();
+        string OrderLineTotal = "10";
+        string TotalCost = "9.99";
 
         [TestMethod]
         public void InstanceOK()
@@ -171,8 +172,199 @@ namespace TestingOrderLine
         {
             clsOrderLine OrderLine = new clsOrderLine();
             String Error = "";
-            Error = OrderLine.Valid(checkoutDate, orderLineTotal, totalCost);
+            Error = OrderLine.Valid(CheckoutDate, OrderLineTotal, TotalCost);
             Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void OrderLineTotalMinLessOne()
+        {
+            clsOrderLine OrderLine = new clsOrderLine();
+            String Error = "";
+            string OrderLineTotal = "";
+            Error = OrderLine.Valid(CheckoutDate, OrderLineTotal, TotalCost);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void OrderLineTotalMin()
+        {
+            //create an instance of the class we want to create
+            clsOrderLine OrderLine = new clsOrderLine();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string OrderLineTotal = "a"; //this should be ok
+            //invoke the method
+            Error = OrderLine.Valid(CheckoutDate, OrderLineTotal, TotalCost);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void OrderLineTotalMinPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsOrderLine OrderLine = new clsOrderLine();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string OrderLineTotal = "aa"; //this should be ok
+            //invoke the method
+            Error = OrderLine.Valid(CheckoutDate, OrderLineTotal, TotalCost);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void OrderLineTotalMaxLessOne()
+        {
+            //create an instance of the class we want to create
+            clsOrderLine OrderLine = new clsOrderLine();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string OrderLineTotal = "aaaaa"; //this should be ok
+            //invoke the method
+            Error = OrderLine.Valid(CheckoutDate, OrderLineTotal, TotalCost);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void OrderLineTotalMax()
+        {
+            //create an instance of the class we want to create
+            clsOrderLine OrderLine = new clsOrderLine();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string OrderLineTotal = "aaaaaa"; //this should be ok
+            //invoke the method
+            Error = OrderLine.Valid(CheckoutDate, OrderLineTotal, TotalCost);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void OrderLineTotalPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsOrderLine OrderLine = new clsOrderLine();
+            //string variable to store any error message
+            String Error = "";
+            //this should fail
+            string OrderLineTotal = "";
+            //invoke the method
+            Error = OrderLine.Valid(CheckoutDate, OrderLineTotal, TotalCost);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void OrderLineTotalMid()
+        {
+            //create an instance of the class we want to create
+            clsOrderLine OrderLine = new clsOrderLine();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string OrderLineTotal = "aaa"; //this should be ok
+            //invoke the method
+            Error = OrderLine.Valid(CheckoutDate, OrderLineTotal, TotalCost);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void OrderLineTotalExtremeMax()
+        {
+            clsOrderLine OrderLine = new clsOrderLine();
+            String Error = "";
+            string OrderLineTotal = "";
+            OrderLineTotal = OrderLineTotal.PadRight(500, 'a');
+            Error = OrderLine.Valid(CheckoutDate, OrderLineTotal, TotalCost);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void CheckoutDateMinLessOne()
+        {
+            clsOrderLine OrderLine = new clsOrderLine();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddDays(-1);
+            string CheckoutDate = TestDate.ToString();
+            //invoke the method
+            Error = OrderLine.Valid(CheckoutDate, OrderLineTotal, TotalCost);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void CheckoutDateMin()
+        {
+            //create an instance of the class we want to create
+            clsOrderLine OrderLine = new clsOrderLine();
+            //string variable to store any error message
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date; //today
+            string CheckoutDate = TestDate.ToString();
+            //invoke the method
+            Error = OrderLine.Valid(CheckoutDate, OrderLineTotal, TotalCost);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void CheckoutDateMinPlusOne()
+        {
+            clsOrderLine OrderLine = new clsOrderLine();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddDays(1);
+            string CheckoutDate = TestDate.ToString();
+            //invoke the method
+            Error = OrderLine.Valid(CheckoutDate, OrderLineTotal, TotalCost);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CheckoutDateExtremeMin()
+        {
+            //create an instance of the class we want to create
+            clsOrderLine OrderLine = new clsOrderLine();
+            //string variable to store any error message
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddYears(-100);
+            string CheckoutDate = TestDate.ToString();
+            //invoke the method
+            Error = OrderLine.Valid(CheckoutDate, OrderLineTotal, TotalCost);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void CheckoutDateExtremeMax()
+        {
+            //create an instance of the class we want to create
+            clsOrderLine OrderLine = new clsOrderLine();
+            //string variable to store any error message
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddYears(100);
+            string CheckoutDate = TestDate.ToString();
+            //invoke the method
+            Error = OrderLine.Valid(CheckoutDate, OrderLineTotal, TotalCost);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+
+        public void CheckoutDateInvalidData()
+        {
+            clsOrderLine OrderLine = new clsOrderLine();
+            String Error = "";
+            string CheckoutDate = "this is not a date!";
+            Error = OrderLine.Valid(CheckoutDate, OrderLineTotal, TotalCost);
+            Assert.AreNotEqual(Error, "");
         }
     }
 }

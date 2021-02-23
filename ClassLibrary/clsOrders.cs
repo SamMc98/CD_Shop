@@ -76,8 +76,32 @@ namespace ClassLibrary
 
         public string Valid(string shippingAddress, string deliveryDate)
         {
-
-            return "";
+            String Error = "";
+            DateTime DateTemp;
+            if (shippingAddress.Length == 0)
+            {
+                Error = Error + "The shipping address may not be blank : ";
+            }
+            if (shippingAddress.Length > 50)
+            {
+                Error = Error + "The shipping address must be less than 50 characters : ";
+            }
+            try
+            {
+                DateTemp = Convert.ToDateTime(deliveryDate);
+                if (DateTemp < DateTime.Now.Date)
+                {
+                    Error = Error + "The date cannot be in the past : ";
+                }
+                if (DateTemp > DateTime.Now.Date)
+                {
+                    Error = Error + "The date cannot be in the future : ";
+                }
+            }
+            catch {
+                Error = Error + "The date was not a valid date : ";
+            }
+            return Error;
         }
     }
 }
