@@ -11,4 +11,16 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
 
     }
+
+    protected void btnOK_Click(object sender, EventArgs e)
+    {
+        //create a new instance of clsStock
+            //clsStock AnStock = new clsStock();
+        //capture the album title 
+            //AnStock.AlbumTitle = txtAlbumTitle.Text; 
+
+        //navigate to the viewer page
+            //Response.Redirect("StockViewer.aspx"); 
+
+    }
 }
