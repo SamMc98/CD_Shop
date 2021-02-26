@@ -6,12 +6,13 @@
 <head runat="server">
     <title></title>
 </head>
-<body>
+<body id="btnFind">
     <form id="form1" runat="server">
         <div>
         </div>
         <asp:Label ID="lblStaffID" runat="server" Text="Staff ID"></asp:Label>
         <asp:TextBox ID="txtStaffID" runat="server" style="margin-left: 13px"></asp:TextBox>
+        <asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click" Text="Find" />
         <p>
             <asp:Label ID="lblFullName" runat="server" Text="Full Name" width="48px"></asp:Label>
             <asp:TextBox ID="txtFullName" runat="server" style="margin-left: 12px" ></asp:TextBox>

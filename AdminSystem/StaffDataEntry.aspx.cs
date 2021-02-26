@@ -38,5 +38,36 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
 
 
-    /* Order.OrderLineTotal = int.Parse(txtOrderLineTotal.Text); */
+
+
+
+
+    protected void btnFind_Click(object sender, EventArgs e)
+    {   
+        // create an instance of the staff class
+        clsStaff aStaff = new clsStaff();
+
+        // variable to store the primary key
+        Int32 StaffID;
+
+        // variable to store the result of the find operation
+        Boolean Found = false;
+
+        //get the primary key entered by the user
+        StaffID = Convert.ToInt32(txtStaffID.Text);
+
+        // find the record
+        Found = aStaff.Find(StaffID);
+
+        //if found
+        if(Found == true)
+        {
+            // display the values of the properties in the form
+            txtDOB.Text = aStaff.StaffDateOfBirth.ToString();
+            txtStaffID.Text = aStaff.StaffID.ToString();
+            txtSalary.Text = aStaff.StaffYearlySalary.ToString();
+            txtFullName.Text = aStaff.StaffFullName.ToString();
+
+        }
+    }
 }

@@ -147,7 +147,7 @@ namespace Testing3
             // invoke the method
             Found = aStaff.Find(StaffID);
 
-            if (aStaff.StaffDateOfBirth != Convert.ToDateTime("16/09/2015"))
+            if (aStaff.StaffDateOfBirth != Convert.ToDateTime("1995-11-10"))
             {
                 OK = false;
             }
@@ -201,7 +201,7 @@ namespace Testing3
             Found = aStaff.Find(StaffID);
 
             // check the staff name
-            if (aStaff.StaffFullName != "Test Name")
+            if (aStaff.StaffFullName != "SamHughes")
             {
                 OK = false;
             }
@@ -228,7 +228,7 @@ namespace Testing3
             Found = aStaff.Find(StaffID);
 
             // check the property
-            if (aStaff.StaffYearlySalary != 10000.50)
+            if (aStaff.StaffYearlySalary != 30000)
             {
                 OK = false;
             }
