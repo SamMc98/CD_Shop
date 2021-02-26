@@ -78,14 +78,30 @@ namespace ClassLibrary
 
         public bool Find(int staffID)
         {
-            // set the private data members to the test data value
-            mStaffID = 1;
-            mDateAdded = Convert.ToDateTime("16/9/2015");
-            mManager = true;
-            mFullName = "Test Name";
-            mStaffSalary = 10000.50;
-            // always return true (test data)
-            return true;
+            //create an instance of the data connection
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@StaffID", staffID);
+            DB.Execute("sproc_StaffManagement_FilterByStaffID");
+            // if one record isfound (there should be either one or zero)
+            if (DB.Count == 1)
+            {
+                // copy the data from the database to the private data members
+                mStaffID = Convert.ToInt32(DB.DataTable.Rows[0]["StaffID"]);
+                mFullName = Convert.ToString(DB.DataTable.Rows[0]["FullName"]);
+                mManager = Convert.ToBoolean(DB.DataTable.Rows[0]["Manager"]);
+                mDateAdded = Convert.ToDateTime(DB.DataTable.Rows[0]["DOB"]);
+                mStaffSalary = Convert.ToDouble(DB.DataTable.Rows[0]["Salary"]);
+
+                // return that everything worked OK
+                return true;
+            }
+            // if no record was found
+            else
+            {
+                // return false indicating a problem
+                return false;
+            }
+
         }
     }
 }
