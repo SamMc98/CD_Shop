@@ -100,6 +100,14 @@ namespace ClassLibrary
             {
                 Error = Error + "The order line total must be less than 50 characters : ";
             }
+            if (totalCost.Length == 0)
+            {
+                Error = Error + "The total cost may not be blank : ";
+            }
+            if (totalCost.Length > 6)
+            {
+                Error = Error + "The total cost must be less than 6 characters : ";
+            }
             try
             {
                 DateTemp = Convert.ToDateTime(checkoutDate);
