@@ -17,6 +17,22 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
         //Create a new instance of clsOrders
         clsOrders Order = new clsOrders();
+        string OrderID = txtOrderID.Text;
+        string ShippingAddress = txtShippingAddress.Text;
+        string DeliveryDate = txtDeliveryDate.Text;
+        string Error = "";
+        Error = Order.Valid(ShippingAddress, DeliveryDate);
+        if (Error == "") {
+            Order.ShippingAddress = ShippingAddress;
+            Order.DeliveryDate = Convert.ToDateTime(DeliveryDate);
+            Session["Order"] = Order;
+            Response.Redirect("OrdersViewer.aspx");
+        }
+        else
+        {
+            lblError.Text = Error;
+        }
+/**
         //Capture the order ID
         Order.OrderID = Int32.Parse(txtOrderID.Text);
         //Capture the shipping address
@@ -35,7 +51,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //Store the shipping address in the session object
         Session["Order"] = Order;
         //Navigate to the viewer page
-        Response.Redirect("OrdersViewer.aspx");
+        Response.Redirect("OrdersViewer.aspx");*/
     }
 
     protected void btnFind_Click(object sender, EventArgs e)

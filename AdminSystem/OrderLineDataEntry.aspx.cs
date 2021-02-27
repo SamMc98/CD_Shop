@@ -15,7 +15,28 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     protected void btnOk_Click(object sender, EventArgs e)
     {
-        //Create a new instance of clsOrderLine
+        //Create a new instance of clsOrders
+        clsOrderLine OrderLine = new clsOrderLine();
+        string OrderLineID = txtOrderLineID.Text;
+        string OrderLineTotal = txtOrderLineTotal.Text;
+        string CheckoutDate = txtCheckoutDate.Text;
+        string TotalCost = txtTotalCost.Text;
+        string Error = "";
+        Error = OrderLine.Valid(CheckoutDate, OrderLineTotal, TotalCost);
+        if (Error == "")
+        {
+            OrderLine.OrderLineTotal = Int32.Parse(OrderLineTotal);
+            OrderLine.CheckoutDate = Convert.ToDateTime(CheckoutDate);
+            OrderLine.TotalCost = Int32.Parse(TotalCost);
+            Session["OrderLine"] = OrderLine;
+            Response.Redirect("OrderLineViewer.aspx");
+        }
+        else
+        {
+            lblError.Text = Error;
+        }
+
+        /**Create a new instance of clsOrderLine
         clsOrderLine OrderLine = new clsOrderLine();
         //Capture the orderLine checkout
         if (ChkOrderLineCheckout.Checked)
@@ -37,7 +58,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //Store the shipping address in the session object
         Session["OrderLine"] = OrderLine;
         //Navigate to the viewer page
-        Response.Redirect("OrderLineViewer.aspx");
+        Response.Redirect("OrderLineViewer.aspx");*/
     }
 
     protected void btnFind_Click(object sender, EventArgs e)
