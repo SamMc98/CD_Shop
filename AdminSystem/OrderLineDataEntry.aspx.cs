@@ -8,9 +8,28 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    Int32 OrderLineID;
     protected void Page_Load(object sender, EventArgs e)
     {
+        OrderLineID = Convert.ToInt32(Session["OrderLineID"]);
+        if (IsPostBack == false)
+        {
+            if (OrderLineID != -1)
+            {
+                DisplayOrderLine();
+            }
+        }
+    }
 
+    private void DisplayOrderLine()
+    {
+        clsOrderLineCollection OrderLine = new clsOrderLineCollection();
+        OrderLine.ThisOrderLine.Find(OrderLineID);
+        txtOrderLineID.Text = OrderLine.ThisOrderLine.OrderLineID.ToString();
+        txtOrderLineTotal.Text = OrderLine.ThisOrderLine.OrderLineTotal.ToString();
+        txtCheckoutDate.Text = OrderLine.ThisOrderLine.CheckoutDate.ToString();
+        txtTotalCost.Text = OrderLine.ThisOrderLine.TotalCost.ToString();
+        ChkOrderLineCheckout.Checked = OrderLine.ThisOrderLine.OrderLineCheckout; 
     }
 
     protected void btnOk_Click(object sender, EventArgs e)
@@ -31,14 +50,25 @@ public partial class _1_DataEntry : System.Web.UI.Page
             OrderLineList.ThisOrderLine = OrderLine;
             OrderLineList.Add();
             Response.Redirect("OrderLineViewer.aspx");*/
+            OrderLine.OrderLineID = Int32.Parse(OrderLineID);
             OrderLine.OrderLineTotal = Int32.Parse(OrderLineTotal);
             OrderLine.CheckoutDate = Convert.ToDateTime(CheckoutDate);
             OrderLine.TotalCost = Double.Parse(TotalCost);
             OrderLine.OrderLineCheckout = ChkOrderLineCheckout.Checked;
             //Session["OrderLine"] = OrderLine;
             clsOrderLineCollection OrderLineList = new clsOrderLineCollection();
-            OrderLineList.Add();
-            Response.Redirect("OrderLineViewer.aspx");
+            if (int.Parse(OrderLineID) == -1)
+            {
+                OrderLineList.ThisOrderLine = OrderLine;
+                OrderLineList.Add();
+            }
+            else
+            {
+                OrderLineList.ThisOrderLine.Find(int.Parse(OrderLineID));
+                OrderLineList.ThisOrderLine = OrderLine;
+                OrderLineList.Update();
+            }
+            Response.Redirect("OrderLineList.aspx");
         }
         else
         {

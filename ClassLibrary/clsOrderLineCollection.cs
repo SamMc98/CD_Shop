@@ -83,5 +83,16 @@ namespace ClassLibrary
             DB.AddParameter("@TotalCost", mThisOrderLine.TotalCost);
             return DB.Execute("sproc_tblOrderLineProcessing_Insert");
         }
+
+        public void Update()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@OrderLineID", mThisOrderLine.OrderLineID);
+            DB.AddParameter("@OrderLineCheckout", mThisOrderLine.OrderLineCheckout);
+            DB.AddParameter("@CheckoutDate", mThisOrderLine.CheckoutDate);
+            DB.AddParameter("@OrderLineTotal", mThisOrderLine.OrderLineTotal);
+            DB.AddParameter("@TotalCost", mThisOrderLine.TotalCost);
+            DB.Execute("sproc_tblOrderLineProcessing_Update");
+        }
     }
 }
