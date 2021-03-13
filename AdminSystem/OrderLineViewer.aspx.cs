@@ -15,6 +15,9 @@ public partial class _1Viewer : System.Web.UI.Page
         //Get the data from the session object
         OrderLine = (clsOrderLine)Session["OrderLine"];
         //Display the data entered for these entries
-        Response.Write(OrderLine.OrderLineID + "<br>" + OrderLine.OrderLineCheckout + "<br>" + OrderLine.CheckoutDate + "<br>" + OrderLine.OrderLineTotal + "<br>" + OrderLine.TotalCost);
+        Response.Write(OrderLine.OrderLineCheckout);
+        Response.Write(OrderLine.CheckoutDate + "<br>");
+        Response.Write(OrderLine.OrderLineTotal + "<br>");
+        Response.Write(OrderLine.TotalCost);
     }
 }

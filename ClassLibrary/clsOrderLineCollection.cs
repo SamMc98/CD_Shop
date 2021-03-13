@@ -6,6 +6,7 @@ namespace ClassLibrary
     public class clsOrderLineCollection
     {
         List<clsOrderLine> mOrderLineList = new List<clsOrderLine>();
+        clsOrderLine mThisOrderLine = new clsOrderLine();
 
         public clsOrderLineCollection()
         {
@@ -61,6 +62,26 @@ namespace ClassLibrary
             {
             }
         }
-        public clsOrderLine ThisOrderLine { get; set; }
+        public clsOrderLine ThisOrderLine { get
+            {
+                return mThisOrderLine;
+            }
+            set
+            {
+                mThisOrderLine = value;
+            }
+        }
+
+        public int Add()
+        {
+            //  mThisOrderLine.OrderLineID = 1;
+            //  return mThisOrderLine.OrderLineID;
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@OrderLineCheckout", mThisOrderLine.OrderLineCheckout);
+            DB.AddParameter("@CheckoutDate", mThisOrderLine.CheckoutDate);
+            DB.AddParameter("@OrderLineTotal", mThisOrderLine.OrderLineTotal);
+            DB.AddParameter("@TotalCost", mThisOrderLine.TotalCost);
+            return DB.Execute("sproc_tblOrderLineProcessing_Insert");
+        }
     }
 }

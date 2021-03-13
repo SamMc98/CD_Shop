@@ -25,10 +25,19 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Error = OrderLine.Valid(CheckoutDate, OrderLineTotal, TotalCost);
         if (Error == "")
         {
+            /*
+            // Session["OrderLine"] = OrderLine;
+            clsOrderLineCollection OrderLineList = new clsOrderLineCollection();
+            OrderLineList.ThisOrderLine = OrderLine;
+            OrderLineList.Add();
+            Response.Redirect("OrderLineViewer.aspx");*/
             OrderLine.OrderLineTotal = Int32.Parse(OrderLineTotal);
             OrderLine.CheckoutDate = Convert.ToDateTime(CheckoutDate);
-            OrderLine.TotalCost = Int32.Parse(TotalCost);
-            Session["OrderLine"] = OrderLine;
+            OrderLine.TotalCost = Double.Parse(TotalCost);
+            OrderLine.OrderLineCheckout = ChkOrderLineCheckout.Checked;
+            //Session["OrderLine"] = OrderLine;
+            clsOrderLineCollection OrderLineList = new clsOrderLineCollection();
+            OrderLineList.Add();
             Response.Redirect("OrderLineViewer.aspx");
         }
         else
