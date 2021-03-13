@@ -78,5 +78,15 @@ namespace ClassLibrary
             DB.AddParameter("@OrderPlaced", mThisOrder.OrderPlaced);
             return DB.Execute("sproc_tblOrderProcessing_Insert");
         }
+
+        public void Update()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@OrderID", mThisOrder.OrderID);
+            DB.AddParameter("@ShippingAddress", mThisOrder.ShippingAddress);
+            DB.AddParameter("@DeliveryDate", mThisOrder.DeliveryDate);
+            DB.AddParameter("@OrderPlaced", mThisOrder.OrderPlaced);
+            DB.Execute("sproc_tblOrderProcessing_Update");
+        }
     }
 }

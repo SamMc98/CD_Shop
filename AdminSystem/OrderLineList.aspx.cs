@@ -31,4 +31,24 @@ public partial class _1_List : System.Web.UI.Page
         //redirect to the data entry page
         Response.Redirect("OrderLineDataEntry.aspx");
     }
+
+    protected void btnEdit_Click(object sender, EventArgs e)
+    {
+        Int32 OrderLineID;
+        if (lstOrderLineList.SelectedIndex != -1)
+        {
+            OrderLineID = Convert.ToInt32(lstOrderLineList.SelectedValue);
+            Session["OrderID"] = OrderLineID;
+            Response.Redirect("OrderLineDataEntry.aspx");
+        }
+        else
+        {
+            lblError.Text = "Please select a record to delete from the list";
+        }
+    }
+
+    protected void btnDelete_Click(object sender, EventArgs e)
+    {
+
+    }
 }

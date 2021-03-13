@@ -8,9 +8,27 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    Int32 OrderID;
     protected void Page_Load(object sender, EventArgs e)
     {
+        OrderID = Convert.ToInt32(Session["OrderID"]);
+        if (IsPostBack == false)
+        {
+            if (OrderID != -1)
+            {
+                DisplayOrder();
+            }
+        }
+    }
 
+    private void DisplayOrder()
+    {
+        clsOrdersCollection TheOrder = new clsOrdersCollection();
+        TheOrder.ThisOrder.Find(OrderID);
+        txtOrderID.Text = TheOrder.ThisOrder.OrderID.ToString();
+        txtShippingAddress.Text = TheOrder.ThisOrder.ShippingAddress;
+        txtDeliveryDate.Text = TheOrder.ThisOrder.DeliveryDate.ToString();
+        ChkOrderPlaced.Checked = TheOrder.ThisOrder.OrderPlaced;
     }
 
     protected void btnOk_Click(object sender, EventArgs e)
@@ -23,14 +41,29 @@ public partial class _1_DataEntry : System.Web.UI.Page
         string Error = "";
         Error = Order.Valid(ShippingAddress, DeliveryDate);
         if (Error == "") {
+            Order.OrderID = Int32.Parse(OrderID);
+            // Order.OrderID = Convert.ToInt32(OrderID);
             Order.ShippingAddress = ShippingAddress;
             Order.DeliveryDate = Convert.ToDateTime(DeliveryDate);
             Order.OrderPlaced = ChkOrderPlaced.Checked;
             clsOrdersCollection OrderList = new clsOrdersCollection();
-            OrderList.ThisOrder = Order;
+            if (int.Parse(OrderID) == -1)
+            {
+                OrderList.ThisOrder = Order;
+                OrderList.Add();
+            }
+            else
+            {
+                OrderList.ThisOrder.Find(int.Parse(txtOrderID.Text));
+                OrderList.ThisOrder = Order;
+                OrderList.Update();
+            }
+            Response.Redirect("OrdersList.aspx");
+
+          /*  OrderList.ThisOrder = Order;
             OrderList.Add();
             //Session["Order"] = Order;
-            Response.Redirect("OrdersList.aspx");
+            Response.Redirect("OrdersList.aspx");*/
         }
         else
         {

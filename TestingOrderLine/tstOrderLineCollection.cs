@@ -92,5 +92,29 @@ namespace TestingOrderLine
             AllOrders.ThisOrderLine.Find(PrimaryKey);
             Assert.AreEqual(AllOrders.ThisOrderLine, TestItem);
         }
+        [TestMethod]
+        public void UpdateMethodOK()
+        {
+            clsOrderLineCollection AllOrders = new clsOrderLineCollection();
+            clsOrderLine TestItem = new clsOrderLine();
+            Int32 PrimaryKey = 0;
+            TestItem.OrderLineCheckout = true;
+            TestItem.OrderLineID = 2;
+            TestItem.OrderLineTotal = 2;
+            TestItem.CheckoutDate = DateTime.Now.Date;
+            TestItem.TotalCost = 2.9999;
+            AllOrders.ThisOrderLine = TestItem;
+            PrimaryKey = AllOrders.Add();
+            TestItem.OrderLineID = PrimaryKey;
+            TestItem.OrderLineCheckout = false;
+            TestItem.OrderLineID = 5;
+            TestItem.OrderLineTotal = 12;
+            TestItem.CheckoutDate = DateTime.Now.Date;
+            TestItem.TotalCost = 9.9999;
+            AllOrders.ThisOrderLine = TestItem;
+            AllOrders.Update();
+            AllOrders.ThisOrderLine.Find(PrimaryKey);
+            Assert.AreEqual(AllOrders.ThisOrderLine, TestItem);
+        }
     }
 }

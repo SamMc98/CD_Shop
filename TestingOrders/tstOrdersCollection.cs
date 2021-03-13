@@ -89,5 +89,25 @@ namespace TestingOrders
             AllOrders.ThisOrder.Find(PrimaryKey);
             Assert.AreEqual(AllOrders.ThisOrder, TestItem);
         }
+        [TestMethod]
+        public void UpdateMethodOK()
+        {
+            clsOrdersCollection AllOrders = new clsOrdersCollection();
+            clsOrders TestItem = new clsOrders();
+            Int32 PrimaryKey = 0;
+            TestItem.OrderPlaced = true;
+            TestItem.ShippingAddress = "3 New Street";
+            TestItem.DeliveryDate = DateTime.Now.Date;
+            AllOrders.ThisOrder = TestItem;
+            PrimaryKey = AllOrders.Add();
+            TestItem.OrderID = PrimaryKey;
+            TestItem.OrderPlaced = false;
+            TestItem.ShippingAddress = "6 Saint James Lane";
+            TestItem.DeliveryDate = DateTime.Now.Date;
+            AllOrders.ThisOrder = TestItem;
+            AllOrders.Update();
+            AllOrders.ThisOrder.Find(PrimaryKey);
+            Assert.AreEqual(AllOrders.ThisOrder, TestItem);
+        }
     }
 }
