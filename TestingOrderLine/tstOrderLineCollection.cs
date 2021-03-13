@@ -69,11 +69,28 @@ namespace TestingOrderLine
             AllOrderLines.OrderLineList = TestList;
             Assert.AreEqual(AllOrderLines.Count, TestList.Count);
         }
-       /* [TestMethod]
-        public void TwoRecordsPresent()
+        /* [TestMethod]
+         public void TwoRecordsPresent()
+         {
+             clsOrderLineCollection AllOrderLines = new clsOrderLineCollection();
+             Assert.AreEqual(AllOrderLines.Count, 2);
+         }*/
+        [TestMethod]
+        public void AddMethodOK()
         {
-            clsOrderLineCollection AllOrderLines = new clsOrderLineCollection();
-            Assert.AreEqual(AllOrderLines.Count, 2);
-        }*/
+            clsOrderLineCollection AllOrders = new clsOrderLineCollection();
+            clsOrderLine TestItem = new clsOrderLine();
+            Int32 PrimaryKey = 0;
+            TestItem.OrderLineCheckout = true;
+            TestItem.OrderLineID = 2;
+            TestItem.OrderLineTotal = 2;
+            TestItem.CheckoutDate = DateTime.Now.Date;
+            TestItem.TotalCost = 2.9999;
+            AllOrders.ThisOrderLine = TestItem;
+            PrimaryKey = AllOrders.Add();
+            TestItem.OrderLineID = PrimaryKey;
+            AllOrders.ThisOrderLine.Find(PrimaryKey);
+            Assert.AreEqual(AllOrders.ThisOrderLine, TestItem);
+        }
     }
 }

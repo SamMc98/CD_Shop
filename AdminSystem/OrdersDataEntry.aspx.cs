@@ -25,8 +25,12 @@ public partial class _1_DataEntry : System.Web.UI.Page
         if (Error == "") {
             Order.ShippingAddress = ShippingAddress;
             Order.DeliveryDate = Convert.ToDateTime(DeliveryDate);
-            Session["Order"] = Order;
-            Response.Redirect("OrdersViewer.aspx");
+            Order.OrderPlaced = ChkOrderPlaced.Checked;
+            clsOrdersCollection OrderList = new clsOrdersCollection();
+            OrderList.ThisOrder = Order;
+            OrderList.Add();
+            //Session["Order"] = Order;
+            Response.Redirect("OrdersList.aspx");
         }
         else
         {
