@@ -103,5 +103,9 @@ public partial class _1_DataEntry : System.Web.UI.Page
             txtShippingAddress.Text = Order.ShippingAddress;
             txtDeliveryDate.Text = Order.DeliveryDate.ToString();
         }
+        else
+        {
+            lblError.Text = "Error. No such record exists!";
+        }
     }
 }

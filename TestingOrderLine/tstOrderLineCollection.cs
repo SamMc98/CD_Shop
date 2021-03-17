@@ -116,5 +116,24 @@ namespace TestingOrderLine
             AllOrders.ThisOrderLine.Find(PrimaryKey);
             Assert.AreEqual(AllOrders.ThisOrderLine, TestItem);
         }
+        [TestMethod]
+        public void DeleteMethodOK()
+        {
+            clsOrderLineCollection AllOrderLines = new clsOrderLineCollection();
+            clsOrderLine TestItem = new clsOrderLine();
+            Int32 PrimaryKey = 0;
+            TestItem.OrderLineCheckout = true;
+            TestItem.OrderLineID = 2;
+            TestItem.OrderLineTotal = 2;
+            TestItem.CheckoutDate = DateTime.Now.Date;
+            TestItem.TotalCost = 2.9999;
+            AllOrderLines.ThisOrderLine = TestItem;
+            PrimaryKey = AllOrderLines.Add();
+            TestItem.OrderLineID = PrimaryKey;
+            AllOrderLines.ThisOrderLine.Find(PrimaryKey);
+            AllOrderLines.Delete();
+            Boolean Found = AllOrderLines.ThisOrderLine.Find(PrimaryKey);
+            Assert.IsFalse(Found);
+        }
     }
 }
