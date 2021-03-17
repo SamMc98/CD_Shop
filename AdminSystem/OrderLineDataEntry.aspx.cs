@@ -113,5 +113,9 @@ public partial class _1_DataEntry : System.Web.UI.Page
             txtOrderLineTotal.Text = OrderLine.OrderLineTotal.ToString();
             txtTotalCost.Text = OrderLine.TotalCost.ToString();
         }
+        else
+        {
+            lblError.Text = "Error. No such record exists!";
+        }
     }
 }

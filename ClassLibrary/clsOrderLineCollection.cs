@@ -18,11 +18,11 @@ namespace ClassLibrary
             while (Index < RecordCount)
             {
                 clsOrderLine OrderLine = new clsOrderLine();
-                OrderLine.OrderLineID = Convert.ToInt32(DB.DataTable.Rows[0]["OrderLineID"]);
-                OrderLine.OrderLineCheckout = Convert.ToBoolean(DB.DataTable.Rows[0]["OrderLineCheckout"]);
-                OrderLine.CheckoutDate = Convert.ToDateTime(DB.DataTable.Rows[0]["CheckoutDate"]);
-                OrderLine.OrderLineTotal = Convert.ToInt32(DB.DataTable.Rows[0]["OrderLineTotal"]);
-                OrderLine.TotalCost = Convert.ToDouble(DB.DataTable.Rows[0]["TotalCost"]);
+                OrderLine.OrderLineID = Convert.ToInt32(DB.DataTable.Rows[Index]["OrderLineID"]);
+                OrderLine.OrderLineCheckout = Convert.ToBoolean(DB.DataTable.Rows[Index]["OrderLineCheckout"]);
+                OrderLine.CheckoutDate = Convert.ToDateTime(DB.DataTable.Rows[Index]["CheckoutDate"]);
+                OrderLine.OrderLineTotal = Convert.ToInt32(DB.DataTable.Rows[Index]["OrderLineTotal"]);
+                OrderLine.TotalCost = Convert.ToDouble(DB.DataTable.Rows[Index]["TotalCost"]);
                 mOrderLineList.Add(OrderLine);
                 Index++;
             }
@@ -93,6 +93,13 @@ namespace ClassLibrary
             DB.AddParameter("@OrderLineTotal", mThisOrderLine.OrderLineTotal);
             DB.AddParameter("@TotalCost", mThisOrderLine.TotalCost);
             DB.Execute("sproc_tblOrderLineProcessing_Update");
+        }
+
+        public void Delete()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@OrderLineID", mThisOrderLine.OrderLineID);
+            DB.Execute("sproc_tblOrderLineProcessing_Delete");
         }
     }
 }

@@ -104,7 +104,7 @@ namespace TestingOrderLine
               Boolean OK = true;
               Int32 OrderLineID = 1;
               Found = OrderLine.Find(OrderLineID);
-              if (OrderLine.CheckoutDate != Convert.ToDateTime("18/01/2021"))
+              if (OrderLine.CheckoutDate != Convert.ToDateTime("17/03/2021"))
               {
                   OK = false;
               }

@@ -17,10 +17,10 @@ namespace ClassLibrary
             while (Index < RecordCount)
             {
                 clsOrders Order = new clsOrders();
-                Order.OrderID = Convert.ToInt32(DB.DataTable.Rows[0]["OrderID"]);
-                Order.ShippingAddress = Convert.ToString(DB.DataTable.Rows[0]["ShippingAddress"]);
-                Order.DeliveryDate = Convert.ToDateTime(DB.DataTable.Rows[0]["DeliveryDate"]);
-                Order.OrderPlaced = Convert.ToBoolean(DB.DataTable.Rows[0]["OrderPlaced"]);
+                Order.OrderID = Convert.ToInt32(DB.DataTable.Rows[Index]["OrderID"]);
+                Order.ShippingAddress = Convert.ToString(DB.DataTable.Rows[Index]["ShippingAddress"]);
+                Order.DeliveryDate = Convert.ToDateTime(DB.DataTable.Rows[Index]["DeliveryDate"]);
+                Order.OrderPlaced = Convert.ToBoolean(DB.DataTable.Rows[Index]["OrderPlaced"]);
                 mOrdersList.Add(Order);
                 Index++;
             }
@@ -87,6 +87,13 @@ namespace ClassLibrary
             DB.AddParameter("@DeliveryDate", mThisOrder.DeliveryDate);
             DB.AddParameter("@OrderPlaced", mThisOrder.OrderPlaced);
             DB.Execute("sproc_tblOrderProcessing_Update");
+        }
+
+        public void Delete()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@OrderID", mThisOrder.OrderID);
+            DB.Execute("sproc_tblOrderProcessing_Delete");
         }
     }
 }

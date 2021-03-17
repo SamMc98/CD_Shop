@@ -38,7 +38,7 @@ public partial class _1_List : System.Web.UI.Page
         if (lstOrderLineList.SelectedIndex != -1)
         {
             OrderLineID = Convert.ToInt32(lstOrderLineList.SelectedValue);
-            Session["OrderID"] = OrderLineID;
+            Session["OrderLineID"] = OrderLineID;
             Response.Redirect("OrderLineDataEntry.aspx");
         }
         else
@@ -49,6 +49,16 @@ public partial class _1_List : System.Web.UI.Page
 
     protected void btnDelete_Click(object sender, EventArgs e)
     {
-
+        Int32 OrderLineID;
+        if (lstOrderLineList.SelectedIndex != -1)
+        {
+            OrderLineID = Convert.ToInt32(lstOrderLineList.SelectedValue);
+            Session["OrderLineID"] = OrderLineID;
+            Response.Redirect("OrderLineConfirmDelete.aspx");
+        }
+        else
+        {
+            lblError.Text = "Please select a record from the list.";
+        }
     }
 }
