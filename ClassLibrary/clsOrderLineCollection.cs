@@ -101,5 +101,10 @@ namespace ClassLibrary
             DB.AddParameter("@OrderLineID", mThisOrderLine.OrderLineID);
             DB.Execute("sproc_tblOrderLineProcessing_Delete");
         }
+
+        public void ReportByTotalCost(double TotalCost)
+        {
+            //filters the records based on full or partial total cost
+        }
     }
 }

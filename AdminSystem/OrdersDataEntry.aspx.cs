@@ -8,13 +8,13 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
-    Int32 OrderID;
+    Int32 OrderID_;
     protected void Page_Load(object sender, EventArgs e)
     {
-        OrderID = Convert.ToInt32(Session["OrderID"]);
+        OrderID_ = Convert.ToInt32(Session["OrderID"]);
         if (IsPostBack == false)
         {
-            if (OrderID != -1)
+            if (OrderID_ != -1)
             {
                 DisplayOrder();
             }
@@ -24,7 +24,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
     private void DisplayOrder()
     {
         clsOrdersCollection TheOrder = new clsOrdersCollection();
-        TheOrder.ThisOrder.Find(OrderID);
+        TheOrder.ThisOrder.Find(OrderID_);
         txtOrderID.Text = TheOrder.ThisOrder.OrderID.ToString();
         txtShippingAddress.Text = TheOrder.ThisOrder.ShippingAddress;
         txtDeliveryDate.Text = TheOrder.ThisOrder.DeliveryDate.ToString();
@@ -47,14 +47,14 @@ public partial class _1_DataEntry : System.Web.UI.Page
             Order.DeliveryDate = Convert.ToDateTime(DeliveryDate);
             Order.OrderPlaced = ChkOrderPlaced.Checked;
             clsOrdersCollection OrderList = new clsOrdersCollection();
-            if (int.Parse(OrderID) == -1)
+            if (OrderID_ == -1)
             {
                 OrderList.ThisOrder = Order;
                 OrderList.Add();
             }
             else
             {
-                OrderList.ThisOrder.Find(int.Parse(txtOrderID.Text));
+                OrderList.ThisOrder.Find(OrderID_);
                 OrderList.ThisOrder = Order;
                 OrderList.Update();
             }
