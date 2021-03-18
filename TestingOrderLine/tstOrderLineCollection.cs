@@ -135,20 +135,43 @@ namespace TestingOrderLine
             Boolean Found = AllOrderLines.ThisOrderLine.Find(PrimaryKey);
             Assert.IsFalse(Found);
         }
-        /*[TestMethod]
+      /*  [TestMethod]
         public void ReportByTotalCostMethodOK()
         {
             clsOrderLineCollection AllOrderLines = new clsOrderLineCollection();
             clsOrderLineCollection FilteredOrderLines = new clsOrderLineCollection();
-            FilteredOrderLines.ReportByTotalCost(3.30);
+            FilteredOrderLines.ReportByTotalCost(null);
             Assert.AreEqual(AllOrderLines.Count, FilteredOrderLines.Count);
-        }
+        }*/
         [TestMethod]
         public void ReportByTotalCostNoneFound()
         {
             clsOrderLineCollection FilteredOrders = new clsOrderLineCollection();
-            FilteredOrders.ReportByTotalCost(0.000);
+            FilteredOrders.ReportByTotalCost("0.0000");
             Assert.AreEqual(0, FilteredOrders.Count);
-        }*/
+        }
+        [TestMethod]
+        public void ReportByTotalCostTestDataFound()
+        {
+            clsOrderLineCollection FilteredOrderLines = new clsOrderLineCollection();
+            Boolean OK = true;
+            FilteredOrderLines.ReportByTotalCost("12.8700");
+            if (FilteredOrderLines.Count == 2)
+            {
+                if (FilteredOrderLines.OrderLineList[0].OrderLineID != 144)
+                {
+                    OK = false;
+                }
+                if (FilteredOrderLines.OrderLineList[1].OrderLineID != 145)
+                {
+                    OK = false;
+                }
+            }
+            else
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
     }
 }

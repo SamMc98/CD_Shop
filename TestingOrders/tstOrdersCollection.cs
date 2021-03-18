@@ -127,7 +127,7 @@ namespace TestingOrders
             Boolean Found = AllOrders.ThisOrder.Find(PrimaryKey);
             Assert.IsFalse(Found);
         }
-      /*  [TestMethod]
+        [TestMethod]
         public void ReportByShippingAddressMethodOK()
         {
             clsOrdersCollection AllOrders = new clsOrdersCollection();
@@ -141,6 +141,29 @@ namespace TestingOrders
             clsOrdersCollection FilteredOrders = new clsOrdersCollection();
             FilteredOrders.ReportByShippingAddress("XXX XXX");
             Assert.AreEqual(0, FilteredOrders.Count);
-        }*/
+        }
+        [TestMethod]
+        public void ReportByShippingAddressTestDataFound()
+        {
+            clsOrdersCollection FilteredOrders = new clsOrdersCollection();
+            Boolean OK = true;
+            FilteredOrders.ReportByShippingAddress("123 Main Street");
+            if (FilteredOrders.Count == 2)
+            {
+                if (FilteredOrders.OrdersList[0].OrderID != 95)
+                {
+                    OK = false;
+                }
+                if (FilteredOrders.OrdersList[1].OrderID != 135)
+                {
+                    OK = false;
+                }
+            }
+            else
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
     }
 }
