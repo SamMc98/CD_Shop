@@ -8,22 +8,29 @@ namespace ClassLibrary
         public List<clsOrders> mOrdersList = new List<clsOrders>();
         clsOrders mThisOrder = new clsOrders();
 
-        public clsOrdersCollection(){
-            Int32 Index = 0;
-            Int32 RecordCount = 0;
+        public clsOrdersCollection()
+        {
+            /*  Int32 Index = 0;
+              Int32 RecordCount = 0;
+              clsDataConnection DB = new clsDataConnection();
+              DB.Execute("sproc_tblOrderProcessing_SelectAll");
+              RecordCount = DB.Count;
+              while (Index < RecordCount)
+              {
+                  clsOrders Order = new clsOrders();
+                  Order.OrderID = Convert.ToInt32(DB.DataTable.Rows[Index]["OrderID"]);
+                  Order.ShippingAddress = Convert.ToString(DB.DataTable.Rows[Index]["ShippingAddress"]);
+                  Order.DeliveryDate = Convert.ToDateTime(DB.DataTable.Rows[Index]["DeliveryDate"]);
+                  Order.OrderPlaced = Convert.ToBoolean(DB.DataTable.Rows[Index]["OrderPlaced"]);
+                  mOrdersList.Add(Order);
+                  Index++;
+             clsDataConnection DB = new clsDataConnection();
+             DB.Execute("sproc_tblOrderProcessing_SelectAll");
+             //PopulateArray(DB);}
+         }*/
             clsDataConnection DB = new clsDataConnection();
             DB.Execute("sproc_tblOrderProcessing_SelectAll");
-            RecordCount = DB.Count;
-            while (Index < RecordCount)
-            {
-                clsOrders Order = new clsOrders();
-                Order.OrderID = Convert.ToInt32(DB.DataTable.Rows[Index]["OrderID"]);
-                Order.ShippingAddress = Convert.ToString(DB.DataTable.Rows[Index]["ShippingAddress"]);
-                Order.DeliveryDate = Convert.ToDateTime(DB.DataTable.Rows[Index]["DeliveryDate"]);
-                Order.OrderPlaced = Convert.ToBoolean(DB.DataTable.Rows[Index]["OrderPlaced"]);
-                mOrdersList.Add(Order);
-                Index++;
-            }
+            PopulateArray(DB);
 
             /**clsOrders TestItem = new clsOrders();
             TestItem.OrderID = 1;
@@ -96,12 +103,31 @@ namespace ClassLibrary
             DB.Execute("sproc_tblOrderProcessing_Delete");
         }
 
-        /*public void ReportByShippingAddress(string ShippingAddress)
+        public void ReportByShippingAddress(string ShippingAddress)
         {
             //filters the records based on full or partial
             clsDataConnection DB = new clsDataConnection();
             DB.AddParameter("@ShippingAddress", ShippingAddress);
             DB.Execute("sproc_tblOrderProcessing_FilterByShippingAddress");
-        }*/
+            PopulateArray(DB);
+        }
+
+        public void PopulateArray(clsDataConnection DB)
+        {
+            Int32 Index = 0;
+            Int32 RecordCount;
+            RecordCount = DB.Count;
+            mOrdersList = new List<clsOrders>();
+            while (Index < RecordCount)
+            {
+                clsOrders Order = new clsOrders();
+                Order.OrderID = Convert.ToInt32(DB.DataTable.Rows[Index]["OrderID"]);
+                Order.ShippingAddress = Convert.ToString(DB.DataTable.Rows[Index]["ShippingAddress"]);
+                Order.DeliveryDate = Convert.ToDateTime(DB.DataTable.Rows[Index]["DeliveryDate"]);
+                Order.OrderPlaced = Convert.ToBoolean(DB.DataTable.Rows[Index]["OrderPlaced"]);
+                mOrdersList.Add(Order);
+                Index++;
+            }
+        }
     }
 }
