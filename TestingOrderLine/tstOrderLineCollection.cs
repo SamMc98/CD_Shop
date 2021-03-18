@@ -135,5 +135,20 @@ namespace TestingOrderLine
             Boolean Found = AllOrderLines.ThisOrderLine.Find(PrimaryKey);
             Assert.IsFalse(Found);
         }
+        /*[TestMethod]
+        public void ReportByTotalCostMethodOK()
+        {
+            clsOrderLineCollection AllOrderLines = new clsOrderLineCollection();
+            clsOrderLineCollection FilteredOrderLines = new clsOrderLineCollection();
+            FilteredOrderLines.ReportByTotalCost(3.30);
+            Assert.AreEqual(AllOrderLines.Count, FilteredOrderLines.Count);
+        }
+        [TestMethod]
+        public void ReportByTotalCostNoneFound()
+        {
+            clsOrderLineCollection FilteredOrders = new clsOrderLineCollection();
+            FilteredOrders.ReportByTotalCost(0.000);
+            Assert.AreEqual(0, FilteredOrders.Count);
+        }*/
     }
 }

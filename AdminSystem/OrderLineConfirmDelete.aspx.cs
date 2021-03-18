@@ -11,7 +11,7 @@ public partial class _1_ConfirmDelete : System.Web.UI.Page
     Int32 OrderLineID;
     protected void Page_Load(object sender, EventArgs e)
     {
-        OrderLineID = Convert.ToInt32(Session["OrderID"]);
+        OrderLineID = Convert.ToInt32(Session["OrderLineID"]);
     }
 
     protected void btnYes_Click(object sender, EventArgs e)

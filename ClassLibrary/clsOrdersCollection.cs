@@ -95,5 +95,13 @@ namespace ClassLibrary
             DB.AddParameter("@OrderID", mThisOrder.OrderID);
             DB.Execute("sproc_tblOrderProcessing_Delete");
         }
+
+        /*public void ReportByShippingAddress(string ShippingAddress)
+        {
+            //filters the records based on full or partial
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@ShippingAddress", ShippingAddress);
+            DB.Execute("sproc_tblOrderProcessing_FilterByShippingAddress");
+        }*/
     }
 }

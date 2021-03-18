@@ -127,5 +127,20 @@ namespace TestingOrders
             Boolean Found = AllOrders.ThisOrder.Find(PrimaryKey);
             Assert.IsFalse(Found);
         }
+      /*  [TestMethod]
+        public void ReportByShippingAddressMethodOK()
+        {
+            clsOrdersCollection AllOrders = new clsOrdersCollection();
+            clsOrdersCollection FilteredOrders = new clsOrdersCollection();
+            FilteredOrders.ReportByShippingAddress("");
+            Assert.AreEqual(AllOrders.Count, FilteredOrders.Count);
+        }
+        [TestMethod]
+        public void ReportByShippingAddressNoneFound()
+        {
+            clsOrdersCollection FilteredOrders = new clsOrdersCollection();
+            FilteredOrders.ReportByShippingAddress("XXX XXX");
+            Assert.AreEqual(0, FilteredOrders.Count);
+        }*/
     }
 }

@@ -8,13 +8,13 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
-    Int32 OrderLineID;
+    Int32 OrderLineID_;
     protected void Page_Load(object sender, EventArgs e)
     {
-        OrderLineID = Convert.ToInt32(Session["OrderLineID"]);
+        OrderLineID_ = Convert.ToInt32(Session["OrderLineID"]);
         if (IsPostBack == false)
         {
-            if (OrderLineID != -1)
+            if (OrderLineID_ != -1)
             {
                 DisplayOrderLine();
             }
@@ -24,7 +24,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
     private void DisplayOrderLine()
     {
         clsOrderLineCollection OrderLine = new clsOrderLineCollection();
-        OrderLine.ThisOrderLine.Find(OrderLineID);
+        OrderLine.ThisOrderLine.Find(OrderLineID_);
         txtOrderLineID.Text = OrderLine.ThisOrderLine.OrderLineID.ToString();
         txtOrderLineTotal.Text = OrderLine.ThisOrderLine.OrderLineTotal.ToString();
         txtCheckoutDate.Text = OrderLine.ThisOrderLine.CheckoutDate.ToString();
@@ -57,14 +57,14 @@ public partial class _1_DataEntry : System.Web.UI.Page
             OrderLine.OrderLineCheckout = ChkOrderLineCheckout.Checked;
             //Session["OrderLine"] = OrderLine;
             clsOrderLineCollection OrderLineList = new clsOrderLineCollection();
-            if (int.Parse(OrderLineID) == -1)
+            if (OrderLineID_ == -1)
             {
                 OrderLineList.ThisOrderLine = OrderLine;
                 OrderLineList.Add();
             }
             else
             {
-                OrderLineList.ThisOrderLine.Find(int.Parse(OrderLineID));
+                OrderLineList.ThisOrderLine.Find(OrderLineID_);
                 OrderLineList.ThisOrderLine = OrderLine;
                 OrderLineList.Update();
             }
