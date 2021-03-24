@@ -9,7 +9,14 @@
 <body>
     <form id="form1" runat="server">
         <div>
+            <asp:ListBox ID="lstStaffList" runat="server" Height="348px" Width="337px"></asp:ListBox>
         </div>
+        <asp:Button ID="btnAdd" runat="server" OnClick="Button1_Click" Text="Add" />
+        <asp:Button ID="btnDelete" runat="server" OnClick="btnDelete_Click" Text="Delete" />
+        <asp:Button ID="btnEdit" runat="server" OnClick="btnEdit_Click" Text="Edit" />
+        <p>
+            <asp:Label ID="lblError" runat="server"></asp:Label>
+        </p>
     </form>
 </body>
 </html>

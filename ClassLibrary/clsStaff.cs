@@ -151,15 +151,7 @@ namespace ClassLibrary
                 //record the error
                 Error = Error + "The date was not a valid date : ";
             }
-            /*
-            // create a date 1 day earlier than 16 years ago to make sure the person is atleast 16 years old
-            DateTime DateSixteen;
-            DateSixteen = DateTime.Now.Date.AddYears(-16).AddDays(-1);
-            if(DateTemp >= DateSixteen)
-            {
-                // record the error
-                Error = Error + "The employee has to be atleast 16 years old to work here";
-            }*/
+           
             try
             {
                 theSal = Convert.ToInt32(salary);
