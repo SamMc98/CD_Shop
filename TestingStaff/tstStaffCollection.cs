@@ -117,5 +117,85 @@ namespace TestingStaff
         }
 
 
+        [TestMethod]
+        public void AddMethodOK()
+        {
+            // create an instance of the class we want to create
+            clsStaffCollection allStaff = new clsStaffCollection();
+
+            // create the item of test data
+            clsStaff TestItem = new clsStaff();
+
+            // var to store the primary key
+            Int32 PrimaryKey = 0;
+
+            // set its properties
+            TestItem.Manager = true;
+            TestItem.StaffDateOfBirth = DateTime.Now.Date;
+            TestItem.StaffFullName = "Joe Hughes";
+            TestItem.StaffYearlySalary = 15000;
+
+            // set ThisStaff to the test data
+            allStaff.ThisStaff = TestItem;
+
+            // add the record
+            PrimaryKey = allStaff.Add();
+
+            // set the primary key of the test data
+            TestItem.StaffID = PrimaryKey;
+
+            // find the record
+            allStaff.ThisStaff.Find(PrimaryKey);
+
+            // test to see that the two values are the same
+            Assert.AreEqual(allStaff.ThisStaff, TestItem);
+        }
+
+        [TestMethod]
+        public void UpdateMethodOK()
+        {
+            // create an instance of the class we want to create
+            clsStaffCollection allStaff = new clsStaffCollection();
+
+            // create the item of test data
+            clsStaff TestItem = new clsStaff();
+
+            // var to store the PK
+            int PrimaryKey = 80;
+
+            // set its properties
+            TestItem.Manager = true;
+            TestItem.StaffFullName = "some name";
+            TestItem.StaffDateOfBirth = DateTime.Now.Date;
+            TestItem.StaffYearlySalary = 20000;
+
+            // set ThisStaff to the test data
+            allStaff.ThisStaff = TestItem;
+
+            // add the record
+            PrimaryKey = allStaff.Add();
+            // set the PK of the test data
+            TestItem.StaffID = PrimaryKey;
+
+            // modify the test data
+            TestItem.Manager = true;
+            TestItem.StaffFullName = "anotehr name";
+            TestItem.StaffDateOfBirth = DateTime.Now.Date;
+            TestItem.StaffYearlySalary = 40000;
+
+            // set the record based on the new test data
+            allStaff.ThisStaff = TestItem;
+
+            // update the record
+            allStaff.Update();
+
+            // find the record
+            allStaff.ThisStaff.Find(PrimaryKey);
+
+            // test to see ThisStaff matches the test data
+            Assert.AreEqual(allStaff.ThisStaff, TestItem);
+        }
+
+
     }
 }
