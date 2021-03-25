@@ -54,7 +54,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
         string Error = "";
 
-        Error = aStaff.Valid(StaffFullName, StaffYearlySalary, StaffDateOfBirth);
+        Error = aStaff.Valid(StaffFullName, StaffDateOfBirth, StaffYearlySalary);
 
         if (Error == "")
         {
