@@ -61,4 +61,25 @@ public partial class _1_List : System.Web.UI.Page
             lblError.Text = "Please select a record from the list.";
         }
     }
+
+    protected void btnApply_Click(object sender, EventArgs e)
+    {
+        clsOrderLineCollection OrderLine = new clsOrderLineCollection();
+        OrderLine.ReportByTotalCost(Convert.ToString(txtFilter.Text));
+        lstOrderLineList.DataSource = OrderLine.OrderLineList;
+        lstOrderLineList.DataValueField = "OrderLineID";
+        lstOrderLineList.DataValueField = "TotalCost";
+        lstOrderLineList.DataBind();
+    }
+
+    protected void btnClear_Click(object sender, EventArgs e)
+    {
+        clsOrderLineCollection OrderLine = new clsOrderLineCollection();
+        OrderLine.ReportByTotalCost("");
+        txtFilter.Text = "";
+        lstOrderLineList.DataSource = OrderLine.OrderLineList;
+        lstOrderLineList.DataValueField = "OrderLineID";
+        lstOrderLineList.DataValueField = "TotalCost";
+        lstOrderLineList.DataBind();
+    }
 }

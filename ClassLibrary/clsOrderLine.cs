@@ -114,18 +114,18 @@ namespace ClassLibrary
                 if (DateTemp < DateTime.Now.Date)
                 {
                     //record the error
-                    Error = Error + "The date cannot be in the past : ";
+                    Error = Error + "The checkout date cannot be in the past : ";
                 }
                 if (DateTemp > DateTime.Now.Date)
                 {
                     //record the error
-                    Error = Error + "The date cannot be in the future : ";
+                    Error = Error + "The checkout date cannot be in the future : ";
                 }
             }
             catch
             {
                 //record the error
-                Error = Error + "The date was not a valid date : ";
+                Error = Error + "The checkout date was not a valid date : ";
             }
 
             return Error;
