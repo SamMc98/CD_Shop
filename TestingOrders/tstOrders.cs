@@ -285,7 +285,7 @@ namespace TestingOrders
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
-        [TestMethod]
+      /*  [TestMethod]
         public void DeliveryDateMinPlusOne()
         {
             clsOrders Order = new clsOrders();
@@ -297,7 +297,7 @@ namespace TestingOrders
             //invoke the method
             Error = Order.Valid(shippingAddress, deliveryDate);
             Assert.AreNotEqual(Error, "");
-        }
+        }*/
 
         [TestMethod]
         public void DeliveryDateExtremeMin()

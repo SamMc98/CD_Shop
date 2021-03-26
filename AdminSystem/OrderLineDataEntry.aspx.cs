@@ -112,6 +112,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
             txtCheckoutDate.Text = OrderLine.CheckoutDate.ToString();
             txtOrderLineTotal.Text = OrderLine.OrderLineTotal.ToString();
             txtTotalCost.Text = OrderLine.TotalCost.ToString();
+            lblError.Text = "";
         }
         else
         {

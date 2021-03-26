@@ -91,15 +91,15 @@ namespace ClassLibrary
                 DateTemp = Convert.ToDateTime(deliveryDate);
                 if (DateTemp < DateTime.Now.Date)
                 {
-                    Error = Error + "The date cannot be in the past : ";
+                    Error = Error + "The delivery date cannot be in the past : ";
                 }
-                if (DateTemp > DateTime.Now.Date)
+                if (DateTemp > DateTime.Today.AddYears(1))
                 {
-                    Error = Error + "The date cannot be in the future : ";
+                    Error = Error + "The delivery date cannot be in the future by one year : ";
                 }
             }
             catch {
-                Error = Error + "The date was not a valid date : ";
+                Error = Error + "The delivery date was not a valid date : ";
             }
             return Error;
         }

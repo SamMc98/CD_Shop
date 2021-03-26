@@ -6,7 +6,7 @@ namespace ClassLibrary
     public class clsOrdersCollection
     {
         public List<clsOrders> mOrdersList = new List<clsOrders>();
-        clsOrders mThisOrder = new clsOrders();
+        public clsOrders mThisOrder = new clsOrders();
 
         public clsOrdersCollection()
         {

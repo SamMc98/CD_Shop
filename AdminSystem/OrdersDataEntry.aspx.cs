@@ -102,6 +102,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         {
             txtShippingAddress.Text = Order.ShippingAddress;
             txtDeliveryDate.Text = Order.DeliveryDate.ToString();
+            lblError.Text = "";
         }
         else
         {

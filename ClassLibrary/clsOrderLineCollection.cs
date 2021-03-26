@@ -81,21 +81,25 @@ namespace ClassLibrary
             //  mThisOrderLine.OrderLineID = 1;
             //  return mThisOrderLine.OrderLineID;
             clsDataConnection DB = new clsDataConnection();
+           // clsOrdersCollection Orders = new clsOrdersCollection();
             DB.AddParameter("@OrderLineCheckout", mThisOrderLine.OrderLineCheckout);
             DB.AddParameter("@CheckoutDate", mThisOrderLine.CheckoutDate);
             DB.AddParameter("@OrderLineTotal", mThisOrderLine.OrderLineTotal);
             DB.AddParameter("@TotalCost", mThisOrderLine.TotalCost);
+        //    DB.AddParameter("@OrderID", Orders.mThisOrder.OrderID);
             return DB.Execute("sproc_tblOrderLineProcessing_Insert");
         }
 
         public void Update()
         {
             clsDataConnection DB = new clsDataConnection();
+          //  clsOrdersCollection Orders = new clsOrdersCollection();
             DB.AddParameter("@OrderLineID", mThisOrderLine.OrderLineID);
             DB.AddParameter("@OrderLineCheckout", mThisOrderLine.OrderLineCheckout);
             DB.AddParameter("@CheckoutDate", mThisOrderLine.CheckoutDate);
             DB.AddParameter("@OrderLineTotal", mThisOrderLine.OrderLineTotal);
             DB.AddParameter("@TotalCost", mThisOrderLine.TotalCost);
+        //    DB.AddParameter("@OrderID", Orders.mThisOrder.OrderID);
             DB.Execute("sproc_tblOrderLineProcessing_Update");
         }
 
@@ -110,7 +114,8 @@ namespace ClassLibrary
         {
             //filters the records based on full or partial total cost
             clsDataConnection DB = new clsDataConnection();
-            DB.AddParameter("@TotalCost", Double.Parse(TotalCost));
+           // DB.AddParameter("@TotalCost", Convert.ToDouble(TotalCost));
+            DB.AddParameter("@TotalCost", TotalCost);
             DB.Execute("sproc_tblOrderLineProcessing_FilterByTotalCost");
             PopulateArray(DB);
         }
