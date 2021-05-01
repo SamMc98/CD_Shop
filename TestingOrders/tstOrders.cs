@@ -105,7 +105,7 @@ namespace TestingOrders
             Boolean OK = true;
             Int32 OrderID = 1;
             Found = Order.Find(OrderID);
-            if (Order.DeliveryDate != Convert.ToDateTime("24/01/2021"))
+            if (Order.DeliveryDate != Convert.ToDateTime("14/04/2021"))
             {
                 OK = false;
             }
