@@ -128,7 +128,7 @@ namespace TestingOrderLine
         {
             clsOrderLineCollection AllOrderLines = new clsOrderLineCollection();
             clsOrderLineCollection FilteredOrderLines = new clsOrderLineCollection();
-            FilteredOrderLines.ReportByTotalCost("");
+        //    FilteredOrderLines.ReportByTotalCost("");
             Assert.AreEqual(AllOrderLines.Count, FilteredOrderLines.Count);
         }
 
@@ -147,11 +147,11 @@ namespace TestingOrderLine
             FilteredOrderLines.ReportByTotalCost("12.8700");
             if (FilteredOrderLines.Count == 2)
             {
-                if (FilteredOrderLines.OrderLineList[0].OrderLineID != 144)
+                if (FilteredOrderLines.OrderLineList[0].OrderLineID != 6)
                 {
                     OK = false;
                 }
-                if (FilteredOrderLines.OrderLineList[1].OrderLineID != 145)
+                if (FilteredOrderLines.OrderLineList[1].OrderLineID != 9)
                 {
                     OK = false;
                 }
