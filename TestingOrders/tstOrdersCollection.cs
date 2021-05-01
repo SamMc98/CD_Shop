@@ -154,7 +154,7 @@ namespace TestingOrders
                 {
                     OK = false;
                 }
-                if (FilteredOrders.OrdersList[1].OrderID != 135)
+                if (FilteredOrders.OrdersList[1].OrderID != 140)
                 {
                     OK = false;
                 }
