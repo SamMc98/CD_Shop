@@ -33,14 +33,7 @@ namespace TestingOrderLine
             AllOrderLines.OrderLineList = TestList;
             Assert.AreEqual(AllOrderLines.OrderLineList, TestList);
         }
-       /* [TestMethod]
-        public void CountPropertyOK()
-        {
-            clsOrderLineCollection AllOrderLines = new clsOrderLineCollection();
-            Int32 SomeCount = 2;
-            AllOrderLines.Count = SomeCount;
-            Assert.AreEqual(AllOrderLines.Count, SomeCount);
-        }*/
+     
         [TestMethod]
         public void ThisOrderLinePropertyOK()
         {
@@ -69,12 +62,7 @@ namespace TestingOrderLine
             AllOrderLines.OrderLineList = TestList;
             Assert.AreEqual(AllOrderLines.Count, TestList.Count);
         }
-        /* [TestMethod]
-         public void TwoRecordsPresent()
-         {
-             clsOrderLineCollection AllOrderLines = new clsOrderLineCollection();
-             Assert.AreEqual(AllOrderLines.Count, 2);
-         }*/
+       
         [TestMethod]
         public void AddMethodOK()
         {
@@ -140,7 +128,7 @@ namespace TestingOrderLine
         {
             clsOrderLineCollection AllOrderLines = new clsOrderLineCollection();
             clsOrderLineCollection FilteredOrderLines = new clsOrderLineCollection();
-            //FilteredOrderLines.ReportByTotalCost("");
+            FilteredOrderLines.ReportByTotalCost("");
             Assert.AreEqual(AllOrderLines.Count, FilteredOrderLines.Count);
         }
 

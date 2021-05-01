@@ -32,14 +32,6 @@ namespace TestingOrders
             AllOrders.OrdersList = TestList;
             Assert.AreEqual(AllOrders.OrdersList, TestList);
         }
-      /*  [TestMethod]
-        public void CountPropertyOK()
-        {
-            clsOrdersCollection AllOrders = new clsOrdersCollection();
-            Int32 SomeCount = 2;
-            AllOrders.Count = SomeCount;
-            Assert.AreEqual(AllOrders.Count, SomeCount);
-        }*/
 
         [TestMethod]
         public void ThisOrdersPropertyOK()
@@ -67,12 +59,7 @@ namespace TestingOrders
             AllOrders.OrdersList = TestList;
             Assert.AreEqual(AllOrders.Count, TestList.Count);
         }
-        /* [TestMethod]
-         public void TwoRecordsPresent()
-         {
-             clsOrdersCollection AllOrders = new clsOrdersCollection();
-             Assert.AreEqual(AllOrders.Count, 2);
-         }*/
+
         [TestMethod]
         public void AddMethodOK()
         {

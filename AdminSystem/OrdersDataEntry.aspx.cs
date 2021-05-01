@@ -42,7 +42,6 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Error = Order.Valid(ShippingAddress, DeliveryDate);
         if (Error == "") {
             Order.OrderID = Int32.Parse(OrderID);
-            // Order.OrderID = Convert.ToInt32(OrderID);
             Order.ShippingAddress = ShippingAddress;
             Order.DeliveryDate = Convert.ToDateTime(DeliveryDate);
             Order.OrderPlaced = ChkOrderPlaced.Checked;
@@ -59,36 +58,11 @@ public partial class _1_DataEntry : System.Web.UI.Page
                 OrderList.Update();
             }
             Response.Redirect("OrdersList.aspx");
-
-          /*  OrderList.ThisOrder = Order;
-            OrderList.Add();
-            //Session["Order"] = Order;
-            Response.Redirect("OrdersList.aspx");*/
         }
         else
         {
             lblError.Text = Error;
         }
-/**
-        //Capture the order ID
-        Order.OrderID = Int32.Parse(txtOrderID.Text);
-        //Capture the shipping address
-        Order.ShippingAddress = txtShippingAddress.Text;
-        //Capture the delivery date
-        Order.DeliveryDate = DateTime.Parse(txtDeliveryDate.Text);
-        //Capture the order placed
-        if (ChkOrderPlaced.Checked)
-        {
-            Order.OrderPlaced = true;
-        }
-        else
-        {
-            Order.OrderPlaced = false;
-        }
-        //Store the shipping address in the session object
-        Session["Order"] = Order;
-        //Navigate to the viewer page
-        Response.Redirect("OrdersViewer.aspx");*/
     }
 
     protected void btnFind_Click(object sender, EventArgs e)
@@ -108,5 +82,10 @@ public partial class _1_DataEntry : System.Web.UI.Page
         {
             lblError.Text = "Error. No such record exists!";
         }
+    }
+
+    protected void btnCancel_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("OrdersList.aspx");
     }
 }

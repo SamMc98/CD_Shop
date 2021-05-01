@@ -285,19 +285,6 @@ namespace TestingOrders
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
-      /*  [TestMethod]
-        public void DeliveryDateMinPlusOne()
-        {
-            clsOrders Order = new clsOrders();
-            String Error = "";
-            DateTime TestDate;
-            TestDate = DateTime.Now.Date;
-            TestDate = TestDate.AddDays(1);
-            string deliveryDate = TestDate.ToString();
-            //invoke the method
-            Error = Order.Valid(shippingAddress, deliveryDate);
-            Assert.AreNotEqual(Error, "");
-        }*/
 
         [TestMethod]
         public void DeliveryDateExtremeMin()

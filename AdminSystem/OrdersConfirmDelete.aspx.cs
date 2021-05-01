@@ -21,4 +21,9 @@ public partial class _1_ConfirmDelete : System.Web.UI.Page
         TheOrders.Delete();
         Response.Redirect("OrdersList.aspx");
     }
+
+    protected void btnNo_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("OrdersList.aspx");
+    }
 }
