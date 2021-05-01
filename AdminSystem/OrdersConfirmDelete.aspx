@@ -12,7 +12,7 @@
             <asp:Label ID="lblMessage" runat="server" Text="Are you sure you want to delete this record?"></asp:Label>
             <br />
             <asp:Button ID="btnYes" runat="server" OnClick="btnYes_Click" Text="Yes" />
-            <asp:Button ID="btnNo" runat="server" Text="No" />
+            <asp:Button ID="btnNo" runat="server" Text="No" OnClick="btnNo_Click" />
         </div>
     </form>
 </body>

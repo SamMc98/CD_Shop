@@ -20,7 +20,6 @@ public partial class _1_DataEntry : System.Web.UI.Page
             }
         }
     }
-
     private void DisplayOrderLine()
     {
         clsOrderLineCollection OrderLine = new clsOrderLineCollection();
@@ -44,18 +43,11 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Error = OrderLine.Valid(CheckoutDate, OrderLineTotal, TotalCost);
         if (Error == "")
         {
-            /*
-            // Session["OrderLine"] = OrderLine;
-            clsOrderLineCollection OrderLineList = new clsOrderLineCollection();
-            OrderLineList.ThisOrderLine = OrderLine;
-            OrderLineList.Add();
-            Response.Redirect("OrderLineViewer.aspx");*/
             OrderLine.OrderLineID = Int32.Parse(OrderLineID);
             OrderLine.OrderLineTotal = Int32.Parse(OrderLineTotal);
             OrderLine.CheckoutDate = Convert.ToDateTime(CheckoutDate);
             OrderLine.TotalCost = Double.Parse(TotalCost);
             OrderLine.OrderLineCheckout = ChkOrderLineCheckout.Checked;
-            //Session["OrderLine"] = OrderLine;
             clsOrderLineCollection OrderLineList = new clsOrderLineCollection();
             if (OrderLineID_ == -1)
             {
@@ -74,30 +66,6 @@ public partial class _1_DataEntry : System.Web.UI.Page
         {
             lblError.Text = Error;
         }
-
-        /**Create a new instance of clsOrderLine
-        clsOrderLine OrderLine = new clsOrderLine();
-        //Capture the orderLine checkout
-        if (ChkOrderLineCheckout.Checked)
-        {
-            OrderLine.OrderLineCheckout = true;
-        }
-        else
-        {
-            OrderLine.OrderLineCheckout = false;
-        }
-        //Capture the orderLine ID
-        OrderLine.OrderLineID = Int32.Parse(txtOrderLineID.Text);
-        //Capture the checkout date
-        OrderLine.CheckoutDate = DateTime.Parse(txtCheckoutDate.Text);
-        //Capture the orderLine total
-        OrderLine.OrderLineTotal = Int32.Parse(txtOrderLineTotal.Text);
-        //Capture the total cost
-        OrderLine.TotalCost = double.Parse(txtTotalCost.Text);
-        //Store the shipping address in the session object
-        Session["OrderLine"] = OrderLine;
-        //Navigate to the viewer page
-        Response.Redirect("OrderLineViewer.aspx");*/
     }
 
     protected void btnFind_Click(object sender, EventArgs e)
@@ -118,5 +86,10 @@ public partial class _1_DataEntry : System.Web.UI.Page
         {
             lblError.Text = "Error. No such record exists!";
         }
+    }
+
+    protected void btnCancel_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("OrderLineList.aspx");
     }
 }
