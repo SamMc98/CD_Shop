@@ -134,14 +134,14 @@ namespace TestingOrders
         {
             clsOrdersCollection FilteredOrders = new clsOrdersCollection();
             Boolean OK = true;
-            FilteredOrders.ReportByShippingAddress("123 Main Street");
+            FilteredOrders.ReportByShippingAddress("19 Clarence Street");
             if (FilteredOrders.Count == 2)
             {
-                if (FilteredOrders.OrdersList[0].OrderID != 95)
+                if (FilteredOrders.OrdersList[0].OrderID != 7)
                 {
                     OK = false;
                 }
-                if (FilteredOrders.OrdersList[1].OrderID != 140)
+                if (FilteredOrders.OrdersList[1].OrderID != 9)
                 {
                     OK = false;
                 }
