@@ -27,8 +27,8 @@ public partial class _1_DataEntry : System.Web.UI.Page
         txtOrderLineID.Text = OrderLine.ThisOrderLine.OrderLineID.ToString();
         txtOrderLineTotal.Text = OrderLine.ThisOrderLine.OrderLineTotal.ToString();
         txtCheckoutDate.Text = OrderLine.ThisOrderLine.CheckoutDate.ToString();
-        txtTotalCost.Text = OrderLine.ThisOrderLine.TotalCost.ToString();
-        ChkOrderLineCheckout.Checked = OrderLine.ThisOrderLine.OrderLineCheckout; 
+        txtTotalCost.Text = OrderLine.ThisOrderLine.TotalCost.ToString("0.##");
+        ChkOrderLineCheckout.Checked = OrderLine.ThisOrderLine.OrderLineCheckout;
     }
 
     protected void btnOk_Click(object sender, EventArgs e)

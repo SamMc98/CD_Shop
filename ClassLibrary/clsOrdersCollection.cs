@@ -10,40 +10,9 @@ namespace ClassLibrary
 
         public clsOrdersCollection()
         {
-            /*  Int32 Index = 0;
-              Int32 RecordCount = 0;
-              clsDataConnection DB = new clsDataConnection();
-              DB.Execute("sproc_tblOrderProcessing_SelectAll");
-              RecordCount = DB.Count;
-              while (Index < RecordCount)
-              {
-                  clsOrders Order = new clsOrders();
-                  Order.OrderID = Convert.ToInt32(DB.DataTable.Rows[Index]["OrderID"]);
-                  Order.ShippingAddress = Convert.ToString(DB.DataTable.Rows[Index]["ShippingAddress"]);
-                  Order.DeliveryDate = Convert.ToDateTime(DB.DataTable.Rows[Index]["DeliveryDate"]);
-                  Order.OrderPlaced = Convert.ToBoolean(DB.DataTable.Rows[Index]["OrderPlaced"]);
-                  mOrdersList.Add(Order);
-                  Index++;
-             clsDataConnection DB = new clsDataConnection();
-             DB.Execute("sproc_tblOrderProcessing_SelectAll");
-             //PopulateArray(DB);}
-         }*/
             clsDataConnection DB = new clsDataConnection();
             DB.Execute("sproc_tblOrderProcessing_SelectAll");
             PopulateArray(DB);
-
-            /**clsOrders TestItem = new clsOrders();
-            TestItem.OrderID = 1;
-            TestItem.ShippingAddress = "5 Random Street";
-            TestItem.DeliveryDate = DateTime.Now.Date;
-            TestItem.OrderPlaced = true;
-            mOrdersList.Add(TestItem);
-            TestItem = new clsOrders();
-            TestItem.OrderID = 2;
-            TestItem.ShippingAddress = "5 Main Street";
-            TestItem.DeliveryDate = DateTime.Now.Date;
-            TestItem.OrderPlaced = true;
-            mOrdersList.Add(TestItem);*/
         }
         public List<clsOrders> OrdersList {
             get
@@ -77,8 +46,6 @@ namespace ClassLibrary
 
         public int Add()
         {
-            //mThisOrder.OrderID = 1;
-            //return mThisOrder.OrderID;
             clsDataConnection DB = new clsDataConnection();
             DB.AddParameter("@ShippingAddress", mThisOrder.ShippingAddress);
             DB.AddParameter("@DeliveryDate", mThisOrder.DeliveryDate);
