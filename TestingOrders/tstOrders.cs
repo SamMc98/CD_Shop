@@ -120,7 +120,7 @@ namespace TestingOrders
             Boolean OK = true;
             Int32 OrderID = 1;
             Found = Order.Find(OrderID);
-            if (Order.ShippingAddress != "5 Test Street")
+            if (Order.ShippingAddress != "5 Eskidale Street")
             {
                 OK = false;
             }
