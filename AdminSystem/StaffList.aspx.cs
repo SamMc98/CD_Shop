@@ -23,6 +23,7 @@ public partial class _1_List : System.Web.UI.Page
     {
         // create an instace of the staff collection
         clsStaffCollection allStaff = new clsStaffCollection();
+     
 
         // set the data source to the list of staff in the collection
         lstStaffList.DataSource = allStaff.StaffList;
@@ -128,5 +129,10 @@ public partial class _1_List : System.Web.UI.Page
 
         // bind the data to the list
         lstStaffList.DataBind();
+    }
+
+    protected void lstStaffList_SelectedIndexChanged(object sender, EventArgs e)
+    {
+
     }
 }

@@ -24,13 +24,12 @@
         <asp:Label ID="lblSalary" runat="server" Text="Salary" width="48px"></asp:Label>
         <asp:TextBox ID="txtSalary" runat="server" style="margin-left: 22px"></asp:TextBox>
         <p>
-            <asp:Label ID="lblManager" runat="server" Text="Manager" width="48px"></asp:Label>
             <asp:CheckBox ID="chkManager" runat="server" Text="Manager" />
         </p>
         <asp:Label ID="lblError" runat="server"></asp:Label>
         <p>
             <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" Text="OK" Width="48px" />
-            <asp:Button ID="btnCancel" runat="server" style="margin-left: 13px" Text="Cancel" />
+            <asp:Button ID="btnCancel" runat="server" style="margin-left: 13px" Text="Cancel" OnClick="btnCancel_Click" />
         </p>
     </form>
 </body>
