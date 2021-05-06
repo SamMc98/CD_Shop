@@ -69,7 +69,7 @@ public partial class _1_List : System.Web.UI.Page
         Orders.ReportByShippingAddress(txtFilter.Text);
         lstOrdersList.DataSource = Orders.OrdersList;
         lstOrdersList.DataValueField = "OrderID";
-        lstOrdersList.DataValueField = "ShippingAddress";    
+        lstOrdersList.DataValueField = "ShippingAddress";
         lstOrdersList.DataBind();
     }
 

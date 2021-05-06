@@ -67,9 +67,11 @@ namespace TestingOrders
             clsOrders TestItem = new clsOrders();
             Int32 PrimaryKey = 0;
             TestItem.OrderPlaced = true;
-            TestItem.OrderID = 2;
-            TestItem.ShippingAddress = "3 New Street";
+            TestItem.OrderID = 5;
+            TestItem.ShippingAddress = "22 Castle Lane";
             TestItem.DeliveryDate = DateTime.Now.Date;
+            TestItem.ProductName = "Gillan Mr Universe";
+            TestItem.ProductQuantity = 3;
             AllOrders.ThisOrder = TestItem;
             PrimaryKey = AllOrders.Add();
             TestItem.OrderID = PrimaryKey;
@@ -83,8 +85,10 @@ namespace TestingOrders
             clsOrders TestItem = new clsOrders();
             Int32 PrimaryKey = 0;
             TestItem.OrderPlaced = true;
-            TestItem.ShippingAddress = "3 New Street";
+            TestItem.ShippingAddress = "22 Castle Lane";
             TestItem.DeliveryDate = DateTime.Now.Date;
+            TestItem.ProductName = "Gillan Mr Universe";
+            TestItem.ProductQuantity = 3;
             AllOrders.ThisOrder = TestItem;
             PrimaryKey = AllOrders.Add();
             TestItem.OrderID = PrimaryKey;
@@ -103,8 +107,10 @@ namespace TestingOrders
             clsOrders TestItem = new clsOrders();
             Int32 PrimaryKey = 0;
             TestItem.OrderPlaced = true;
-            TestItem.ShippingAddress = "3 New Street";
+            TestItem.ShippingAddress = "22 Castle Lane";
             TestItem.DeliveryDate = DateTime.Now.Date;
+            TestItem.ProductName = "Gillan Mr Universe";
+            TestItem.ProductQuantity = 3;
             TestItem.OrderID = 1;
             AllOrders.ThisOrder = TestItem;
             PrimaryKey = AllOrders.Add();

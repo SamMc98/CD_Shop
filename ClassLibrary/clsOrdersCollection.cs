@@ -50,6 +50,8 @@ namespace ClassLibrary
             DB.AddParameter("@ShippingAddress", mThisOrder.ShippingAddress);
             DB.AddParameter("@DeliveryDate", mThisOrder.DeliveryDate);
             DB.AddParameter("@OrderPlaced", mThisOrder.OrderPlaced);
+            DB.AddParameter("@ProductName", mThisOrder.ProductName);
+            DB.AddParameter("@ProductQuantity", mThisOrder.ProductQuantity);
             return DB.Execute("sproc_tblOrderProcessing_Insert");
         }
 
@@ -60,6 +62,8 @@ namespace ClassLibrary
             DB.AddParameter("@ShippingAddress", mThisOrder.ShippingAddress);
             DB.AddParameter("@DeliveryDate", mThisOrder.DeliveryDate);
             DB.AddParameter("@OrderPlaced", mThisOrder.OrderPlaced);
+            DB.AddParameter("@ProductName", mThisOrder.ProductName);
+            DB.AddParameter("@ProductQuantity", mThisOrder.ProductQuantity);
             DB.Execute("sproc_tblOrderProcessing_Update");
         }
 
@@ -92,6 +96,8 @@ namespace ClassLibrary
                 Order.ShippingAddress = Convert.ToString(DB.DataTable.Rows[Index]["ShippingAddress"]);
                 Order.DeliveryDate = Convert.ToDateTime(DB.DataTable.Rows[Index]["DeliveryDate"]);
                 Order.OrderPlaced = Convert.ToBoolean(DB.DataTable.Rows[Index]["OrderPlaced"]);
+                Order.ProductName = Convert.ToString(DB.DataTable.Rows[Index]["ProductName"]);
+                Order.ProductQuantity = Convert.ToInt32(DB.DataTable.Rows[Index]["ProductQuantity"]);
                 mOrdersList.Add(Order);
                 Index++;
             }
