@@ -9,6 +9,8 @@ namespace ClassLibrary
         private DateTime mDeliveryDate;
         private String mShippingAddress;
         private Boolean mOrderPlaced;
+        private String mProductName;
+        private Int32 mProductQuantity;
 
         public bool OrderPlaced {
             get
@@ -53,6 +55,30 @@ namespace ClassLibrary
                 mOrderID = value;
             }
         }
+
+        public String ProductName
+        {
+            get
+            {
+                return mProductName;
+            }
+            set
+            {
+                mProductName = value;
+            }
+        }
+
+        public Int32 ProductQuantity
+        {
+            get
+            {
+                return mProductQuantity;
+            }
+            set
+            {
+                mProductQuantity = value;
+            }
+        }
         
         public bool Find(int OrderID)
         {
@@ -65,6 +91,8 @@ namespace ClassLibrary
                 mShippingAddress = Convert.ToString(DB.DataTable.Rows[0]["ShippingAddress"]);
                 mDeliveryDate = Convert.ToDateTime(DB.DataTable.Rows[0]["DeliveryDate"]);
                 mOrderPlaced = Convert.ToBoolean(DB.DataTable.Rows[0]["OrderPlaced"]);
+                mProductName = Convert.ToString(DB.DataTable.Rows[0]["ProductName"]);
+                mProductQuantity = Convert.ToInt32(DB.DataTable.Rows[0]["ProductQuantity"]);
 
                 return true;
             }
@@ -74,7 +102,7 @@ namespace ClassLibrary
             }
         }
 
-        public string Valid(string shippingAddress, string deliveryDate)
+        public string Valid(string shippingAddress, string deliveryDate, string productName, int productQuantity)
         {
             String Error = "";
             DateTime DateTemp;
@@ -86,6 +114,19 @@ namespace ClassLibrary
             {
                 Error = Error + "The shipping address must be less than 50 characters : ";
             }
+            if (productName.Length == 0)
+            {
+                Error = Error + "The product name may not be blank : ";
+            }
+            if (productName.Length > 50)
+            {
+                Error = Error + "The product name must be less than 50 characters : ";
+            }
+            if (productQuantity < 0)
+            {
+                Error = Error + "The product quantity must be 0 or more : ";
+            }
+
             try
             {
                 DateTemp = Convert.ToDateTime(deliveryDate);

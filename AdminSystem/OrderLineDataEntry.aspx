@@ -9,6 +9,9 @@
 <body>
     <form id="form1" runat="server">
         <div>
+            <asp:Label ID="lblOrderLineDataEntry" runat="server" Text="Order Line Data Entry"></asp:Label>
+            <br />
+            <br />
         <asp:Label ID="lblOrderLineID" runat="server" Text="OrderLine ID" width="189px"></asp:Label>
         <asp:TextBox ID="txtOrderLineID" runat="server"></asp:TextBox>
             <asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click" Text="Find" />

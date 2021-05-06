@@ -10,7 +10,7 @@ namespace TestingOrderLine
         //Good test data
         string CheckoutDate = DateTime.Now.Date.ToString();
         string OrderLineTotal = "10";
-        string TotalCost = "9.99";
+        string TotalCost = "9.9900";
 
         [TestMethod]
         public void InstanceOK()

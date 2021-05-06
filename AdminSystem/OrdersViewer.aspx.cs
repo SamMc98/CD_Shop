@@ -19,5 +19,7 @@ public partial class _1Viewer : System.Web.UI.Page
         Response.Write(Order.ShippingAddress + "<br>");
         Response.Write(Order.DeliveryDate + "<br>");
         Response.Write(Order.OrderPlaced + "<br>");
+        Response.Write(Order.ProductName + "<br>");
+        Response.Write(Order.ProductQuantity + "<br>");
     }
 }

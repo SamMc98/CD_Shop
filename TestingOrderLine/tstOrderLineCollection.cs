@@ -73,7 +73,7 @@ namespace TestingOrderLine
             TestItem.OrderLineID = 2;
             TestItem.OrderLineTotal = 2;
             TestItem.CheckoutDate = DateTime.Now.Date;
-            TestItem.TotalCost = 2.9999;
+            TestItem.TotalCost = 2.9900;
             AllOrders.ThisOrderLine = TestItem;
             PrimaryKey = AllOrders.Add();
             TestItem.OrderLineID = PrimaryKey;
@@ -90,7 +90,7 @@ namespace TestingOrderLine
             TestItem.OrderLineID = 2;
             TestItem.OrderLineTotal = 2;
             TestItem.CheckoutDate = DateTime.Now.Date;
-            TestItem.TotalCost = 2.9999;
+            TestItem.TotalCost = 2.9900;
             AllOrders.ThisOrderLine = TestItem;
             PrimaryKey = AllOrders.Add();
             TestItem.OrderLineID = PrimaryKey;
@@ -98,7 +98,7 @@ namespace TestingOrderLine
             TestItem.OrderLineID = 5;
             TestItem.OrderLineTotal = 12;
             TestItem.CheckoutDate = DateTime.Now.Date;
-            TestItem.TotalCost = 9.9999;
+            TestItem.TotalCost = 9.9900;
             AllOrders.ThisOrderLine = TestItem;
             AllOrders.Update();
             AllOrders.ThisOrderLine.Find(PrimaryKey);
@@ -114,7 +114,7 @@ namespace TestingOrderLine
             TestItem.OrderLineID = 2;
             TestItem.OrderLineTotal = 2;
             TestItem.CheckoutDate = DateTime.Now.Date;
-            TestItem.TotalCost = 2.9999;
+            TestItem.TotalCost = 2.9900;
             AllOrderLines.ThisOrderLine = TestItem;
             PrimaryKey = AllOrderLines.Add();
             TestItem.OrderLineID = PrimaryKey;

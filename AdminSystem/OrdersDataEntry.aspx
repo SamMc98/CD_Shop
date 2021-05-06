@@ -9,6 +9,9 @@
 <body>
     <form id="form1" runat="server">
         <div>
+            <asp:Label ID="lblDataEntry" runat="server" Text="Order Data Entry"></asp:Label>
+            <br />
+            <br />
             <asp:Label ID="lblOrderID" runat="server" Text="Order ID" width="183px"></asp:Label>
             <asp:TextBox ID="txtOrderID" runat="server"></asp:TextBox>
             <asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click" Text="Find" />
@@ -19,7 +22,15 @@
         <asp:Label ID="lblDeliveryDate" runat="server" Text="Delivery Date" width="183px"></asp:Label>
         <asp:TextBox ID="txtDeliveryDate" runat="server" TextMode="DateTime"></asp:TextBox>
         <br />
+        <br />
         <asp:CheckBox ID="ChkOrderPlaced" runat="server" CheckedChanged="ChkOrderPlaced_CheckedChanged" Text="Order Placed" />
+        <br />
+        <br />
+        <asp:Label ID="lblProductName" runat="server" Text="Product Name" Width="183px"></asp:Label>
+&nbsp;<asp:TextBox ID="txtProductName" runat="server"></asp:TextBox>
+        <br />
+        <asp:Label ID="lblProductQuantity" runat="server" Text="Product Quantity" Width="183px"></asp:Label>
+&nbsp;<asp:TextBox ID="txtProductQuantity" runat="server"></asp:TextBox>
         <br />
         <br />
         <asp:Label ID="lblError" runat="server"></asp:Label>
