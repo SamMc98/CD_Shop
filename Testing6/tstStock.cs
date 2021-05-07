@@ -1,9 +1,8 @@
 ﻿using System;
+using ClassLibrary;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-//using ClassLibary; 
 
-
-namespace TestingStock
+namespace Testing6
 {
     [TestClass]
     public class tstStock
@@ -13,9 +12,9 @@ namespace TestingStock
 
         {
             //create an insatnce of the class we want to create
-                //clsStock AnStock = new clsStock();
+            clsStock AnStock = new clsStock();
             //test to see that it exists
-               // Assert.IsNotNull(AnStock);
+            Assert.IsNotNull(AnStock);
 
 
         }
@@ -25,16 +24,16 @@ namespace TestingStock
 
 
         {
-            
+/*   hello
             //create an instance of the class of the we want to create
-               // clsStock = new clsStock();
+            clsStock AnStock = new clsStock();
             //create some test data to assign to the property 
-               // Boolean TestData = true;
+            Boolean TestData = true;
             //assign the data to the property
-               // AnStock.Active = TestData;
+            AnStock.Active = TestData;
             //test to see that the two values are the same
-               // Assert.AreEqual(AnStock.Active, TestData);
-
+            Assert.AreEqual(AnStock.Active, TestData);
+            */
         }
     }
 }

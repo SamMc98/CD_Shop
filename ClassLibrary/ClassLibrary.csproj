@@ -48,7 +48,14 @@
     <Compile Include="clsOrdersCollection.cs" />
     <Compile Include="clsStaff.cs" />
     <Compile Include="clsStaffCollection.cs" />
+    <Compile Include="clsStock.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TestingStock\TestingStock.csproj">
+      <Project>{78af0ca5-71b3-4959-9e05-a64ed523ffa3}</Project>
+      <Name>TestingStock</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
