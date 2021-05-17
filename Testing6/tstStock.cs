@@ -121,6 +121,42 @@ namespace Testing6
 
         }
 
+        /*
+        //change to match my current ID's 
+        [TestMethod]
+        public void FindMethodOK()
+        {
+            clsOrders Order = new clsOrders();
+            Boolean Found = false;
+            Int32 OrderID = 1;
+            Found = Order.Find(OrderID);
+            Assert.IsTrue(Found);
+        }
 
+        [TestMethod]
+        public void TestOrderIDFound()
+        {
+            clsOrders Order = new clsOrders();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 OrderID = 1;
+            Found = Order.Find(OrderID);
+            if (Order.OrderID != 1)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void ValidMethodOK()
+        {
+            clsOrders Order = new clsOrders();
+            String Error = "";
+            Error = Order.Valid(shippingAddress, deliveryDate, productName, productQuantity);
+            Assert.AreEqual(Error, "");
+        }
+
+    */  
     }
 }
