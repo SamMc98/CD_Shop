@@ -6,8 +6,15 @@ namespace Testing6
 {
     [TestClass]
     public class tstStock
+
     {
-        [TestMethod]
+            //Good test data
+            string AlbumTitle = "2014 Forest Hills Drive";
+            string ReleaseDate = DateTime.Now.Date.ToString();
+            string Price = "5.9900";
+            int StockAmount = 8;
+
+            [TestMethod]
         public void InstanceOK()
 
         {
@@ -88,7 +95,7 @@ namespace Testing6
         }
 
         [TestMethod]
-        public void StockAmountOK()
+        public void StockAmountPropertyOK()
 
 
         {
@@ -105,7 +112,7 @@ namespace Testing6
         }
 
         [TestMethod]
-        public void PriceOK()
+        public void PricePropertyOK()
 
 
         {
@@ -121,27 +128,27 @@ namespace Testing6
 
         }
 
-        /*
+        
         //change to match my current ID's 
         [TestMethod]
         public void FindMethodOK()
         {
-            clsOrders Order = new clsOrders();
+            clsStock Stock = new clsStock();
             Boolean Found = false;
-            Int32 OrderID = 1;
-            Found = Order.Find(OrderID);
+            Int32 StockID = 1;
+            Found = Stock.Find(StockID);
             Assert.IsTrue(Found);
         }
-
+        
         [TestMethod]
         public void TestOrderIDFound()
         {
-            clsOrders Order = new clsOrders();
+            clsStock Stock = new clsStock();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 OrderID = 1;
-            Found = Order.Find(OrderID);
-            if (Order.OrderID != 1)
+            Int32 StockID = 1;
+            Found = Stock.Find(StockID);
+            if (Stock.StockID != 1)
             {
                 OK = false;
             }
@@ -151,12 +158,12 @@ namespace Testing6
         [TestMethod]
         public void ValidMethodOK()
         {
-            clsOrders Order = new clsOrders();
+            clsStock Stock = new clsStock();
             String Error = "";
-            Error = Order.Valid(shippingAddress, deliveryDate, productName, productQuantity);
+            Error = Stock.Valid(AlbumTitle, ReleaseDate, StockAmount, Price);
             Assert.AreEqual(Error, "");
         }
 
-    */  
+     
     }
 }
