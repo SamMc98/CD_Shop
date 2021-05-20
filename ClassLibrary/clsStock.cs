@@ -55,19 +55,19 @@ namespace ClassLibrary
             set { mPrice = value; }
         }
 
-        /* public bool Find(int OrderID)
+         public bool Find(int StockID)
         {
             clsDataConnection DB = new clsDataConnection();
-            DB.AddParameter("@OrderID", OrderID);
+            DB.AddParameter("@StockID", StockID);
             DB.Execute("sproc_tblStockManagement_FilterID");
             if (DB.Count == 1)
             {
-                mOrderID = Convert.ToInt32(DB.DataTable.Rows[0]["OrderID"]);
-                mShippingAddress = Convert.ToString(DB.DataTable.Rows[0]["ShippingAddress"]);
-                mDeliveryDate = Convert.ToDateTime(DB.DataTable.Rows[0]["DeliveryDate"]);
-                mOrderPlaced = Convert.ToBoolean(DB.DataTable.Rows[0]["OrderPlaced"]);
-                mProductName = Convert.ToString(DB.DataTable.Rows[0]["ProductName"]);
-                mProductQuantity = Convert.ToInt32(DB.DataTable.Rows[0]["ProductQuantity"]);
+                mStockID = Convert.ToInt32(DB.DataTable.Rows[0]["StockID"]);
+                mInStock = Convert.ToBoolean(DB.DataTable.Rows[0]["InStock"]);
+                mAlbumTitle = Convert.ToString(DB.DataTable.Rows[0]["AlbumTitle"]);
+                mReleaseDate = Convert.ToDateTime(DB.DataTable.Rows[0]["ReleaseDate"]);
+                mStockAmount = Convert.ToInt32(DB.DataTable.Rows[0]["StockQuantity"]);
+                mPrice = Convert.ToDouble(DB.DataTable.Rows[0]["Price"]);
 
                 return true;
             }
@@ -77,51 +77,46 @@ namespace ClassLibrary
             }
         }
 
-        public string Valid(string shippingAddress, string deliveryDate, string productName, int productQuantity)
+        public string Valid(string AlbumTitle, string ReleaseDate, int StockAmount, string Price)
         {
             String Error = "";
             DateTime DateTemp;
-            if (shippingAddress.Length == 0)
+            if (AlbumTitle.Length == 0)
             {
-                Error = Error + "The shipping address may not be blank : ";
+                Error = Error + "The album title may not be blank : ";
             }
-            if (shippingAddress.Length > 50)
+            if (AlbumTitle.Length > 50)
             {
-                Error = Error + "The shipping address must be less than 50 characters : ";
+                Error = Error + "The album title must be less than 50 characters : ";
             }
-            if (productName.Length == 0)
+            if (Price.Length == 0)
             {
-                Error = Error + "The product name may not be blank : ";
+                Error = Error + "The price may not be blank : ";
             }
-            if (productName.Length > 50)
+            if (Price.Length > 50)
             {
-                Error = Error + "The product name must be less than 50 characters : ";
+                Error = Error + "The price must be less than 50 characters : ";
             }
-            if (productQuantity < 0)
+            if (StockAmount < 0)
             {
-                Error = Error + "The product quantity must be 0 or more : ";
+                Error = Error + "The stock quantity must be 0 or more : ";
             }
 
             try
             {
-                DateTemp = Convert.ToDateTime(deliveryDate);
-                if (DateTemp < DateTime.Now.Date)
+                DateTemp = Convert.ToDateTime(ReleaseDate);
+                
+                if (DateTemp > DateTime.Today.AddDays(1))
                 {
-                    Error = Error + "The delivery date cannot be in the past : ";
-                }
-                if (DateTemp > DateTime.Today.AddYears(1))
-                {
-                    Error = Error + "The delivery date cannot be in the future by one year : ";
+                    Error = Error + "The release date cannot be in the future : ";
                 }
             }
             catch
             {
-                Error = Error + "The delivery date was not a valid date : ";
+                Error = Error + "The release date was not a valid date : ";
             }
             return Error;
         }
     }
 }
-*/
-    }
-}
+   
