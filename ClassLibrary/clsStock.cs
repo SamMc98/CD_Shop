@@ -6,10 +6,6 @@ namespace ClassLibrary
     {
         public clsStock()
         {
-
-
-
-
         }
 
         private Boolean mInStock;
@@ -77,11 +73,11 @@ namespace ClassLibrary
             }
         }
 
-        public string Valid(string AlbumTitle, string ReleaseDate, int StockAmount, string Price)
-        {
+        public string Valid(string AlbumTitle, string ReleaseDate, string Price, int StockAmount) { 
             String Error = "";
             DateTime DateTemp;
-            if (AlbumTitle.Length == 0)
+
+           if (AlbumTitle.Length == 0)
             {
                 Error = Error + "The album title may not be blank : ";
             }
@@ -101,7 +97,7 @@ namespace ClassLibrary
             {
                 Error = Error + "The stock quantity must be 0 or more : ";
             }
-
+                       
             try
             {
                 DateTemp = Convert.ToDateTime(ReleaseDate);
