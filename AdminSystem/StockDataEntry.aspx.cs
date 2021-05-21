@@ -73,6 +73,11 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     protected void btnCancel_Click(object sender, EventArgs e)
     {
+        Response.Redirect("StockList.aspx");
+    }
+    //find
+    protected void Button1_Click(object sender, EventArgs e)
+    {
         clsStock Stock = new clsStock();
         Int32 StockID;
         Boolean Found = false;
@@ -80,9 +85,10 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Found = Stock.Find(StockID);
         if (Found == true)
         {
-            txtAlbumTitle.Text = Stock.AlbumTitle.ToString();
-            txtReleaseDate.Text = Convert.ToString(Stock.ReleaseDate);
-            txtStockQuantity.Text = Convert.ToString(Stock.StockAmount);
+            txtStockQuantity.Text = Stock.StockAmount.ToString();
+            txtReleaseDate.Text = Stock.ReleaseDate.ToString();
+            txtPrice.Text = Stock.Price.ToString();
+            txtAlbumTitle.Text = Stock.AlbumTitle;
             lblError.Text = "";
         }
         else
