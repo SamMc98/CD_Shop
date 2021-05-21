@@ -14,7 +14,7 @@
         <asp:TextBox ID="txtStockID" runat="server"></asp:TextBox>
         <br />
         <asp:Label ID="lblInStock" runat="server" Text="In Stock" width="220px"></asp:Label>
-        <asp:CheckBox ID="lblchckActive" runat="server" Text="Active" />
+        <asp:CheckBox ID="chkInStock" runat="server" />
         <br />
         <asp:Label ID="lblAlbumTitle" runat="server" Text="Album Title" width="220px"></asp:Label>
         <asp:TextBox ID="txtAlbumTitle" runat="server"></asp:TextBox>
@@ -33,7 +33,7 @@
         <br />
         <br />
         <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" Text="OK" />
-        <asp:Button ID="btnCancel" runat="server" Text="Cancel" />
+        <asp:Button ID="btnCancel" runat="server" Text="Cancel" OnClick="btnCancel_Click" />
     </form>
 </body>
 </html>

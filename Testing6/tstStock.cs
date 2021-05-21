@@ -6,12 +6,11 @@ namespace Testing6
 {
     [TestClass]
     public class tstStock
-
+        
     {
-            //Good test data
             string AlbumTitle = "2014 Forest Hills Drive";
             string ReleaseDate = DateTime.Now.Date.ToString();
-            string Price = "5.9900";
+            string Price = "9.9900";
             int StockAmount = 8;
 
             [TestMethod]
@@ -160,10 +159,10 @@ namespace Testing6
         {
             clsStock Stock = new clsStock();
             String Error = "";
-            Error = Stock.Valid(AlbumTitle, ReleaseDate, StockAmount, Price);
+            Error = Stock.Valid(AlbumTitle, ReleaseDate, Price, Convert.ToInt32(StockAmount));
             Assert.AreEqual(Error, "");
         }
-
+        
         [TestMethod]
         public void StockQuantityMinLessOne()
         {
@@ -174,7 +173,7 @@ namespace Testing6
             StockAmount = StockAmount - 1;
             int stockAmount = StockAmount;
             //invoke the method
-            Error = Stock.Valid(AlbumTitle, ReleaseDate, stockAmount, Price);
+            Error = Stock.Valid(AlbumTitle, ReleaseDate, Price, Convert.ToInt32(stockAmount));
             Assert.AreNotEqual(Error, "");
         }
         
@@ -190,7 +189,7 @@ namespace Testing6
             TestDate = DateTime.Now.Date; //today
             string releaseDate = TestDate.ToString();
             //invoke the method
-            Error = Stock.Valid(AlbumTitle, releaseDate, StockAmount, Price);
+            Error = Stock.Valid(AlbumTitle, ReleaseDate, Price, Convert.ToInt32(StockAmount));
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -208,7 +207,7 @@ namespace Testing6
             TestDate = TestDate.AddYears(100);
             string releaseDate = TestDate.ToString();
             //invoke the method
-            Error = Stock.Valid(AlbumTitle, releaseDate, StockAmount, Price);
+            Error = Stock.Valid(AlbumTitle, releaseDate, Price, Convert.ToInt32(StockAmount));
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -219,225 +218,227 @@ namespace Testing6
             clsStock Stock = new clsStock();
             String Error = "";
             string releaseDate = "this is not a date!";
-            Error = Stock.Valid(AlbumTitle, releaseDate, StockAmount, Price);
+            Error = Stock.Valid(AlbumTitle, releaseDate, Price, Convert.ToInt32(StockAmount));
             Assert.AreNotEqual(Error, "");
         }
-        /*
+
+        //bits contiuning after working with sam
+        
         [TestMethod]
-        public void ShippingAddressMinLessOne()
+        public void AlbumTitleMinLessOne()
         {
-            clsOrders Order = new clsOrders();
+            clsStock Stock = new clsStock();
             String Error = "";
-            string ShippingAddress = "";
-            Error = Order.Valid(ShippingAddress, deliveryDate, productName, productQuantity);
+            string albumTitle = "";
+            Error = Stock.Valid(albumTitle, ReleaseDate, Price, Convert.ToInt32(StockAmount));
             Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
-        public void ShippingAddressMin()
+        public void AlbumTitleMin()
         {
             //create an instance of the class we want to create
-            clsOrders Order = new clsOrders();
+            clsStock Stock = new clsStock();
             //string variable to store any error message
             String Error = "";
             //create some test data to pass to the method
-            string ShippingAddress = "a"; //this should be ok
+            string AlbumTitle = "a"; //this should be ok
             //invoke the method
-            Error = Order.Valid(ShippingAddress, deliveryDate, productName, productQuantity);
+            Error = Stock.Valid(AlbumTitle, ReleaseDate, Price, Convert.ToInt32(StockAmount));
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
-        public void ShippingAddressMinPlusOne()
+        public void AlbumTitleMinPlusOne()
         {
             //create an instance of the class we want to create
-            clsOrders Order = new clsOrders();
+            clsStock Stock = new clsStock();
             //string variable to store any error message
             String Error = "";
             //create some test data to pass to the method
-            string ShippingAddress = "aa"; //this should be ok
+            string AlbumTitle = "aa"; //this should be ok
             //invoke the method
-            Error = Order.Valid(ShippingAddress, deliveryDate, productName, productQuantity);
+            Error = Stock.Valid(AlbumTitle, ReleaseDate, Price, Convert.ToInt32(StockAmount));
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
-        public void ShippingAddressMaxLessOne()
+        public void AlbumTitleMaxLessOne()
         {
             //create an instance of the class we want to create
-            clsOrders Order = new clsOrders();
+            clsStock Stock = new clsStock();
             //string variable to store any error message
             String Error = "";
             //create some test data to pass to the method
-            string ShippingAddress = "aaaaa"; //this should be ok
+            string AlbumTitle = "aaaaa"; //this should be ok
             //invoke the method
-            Error = Order.Valid(ShippingAddress, deliveryDate, productName, productQuantity);
+            Error = Stock.Valid(AlbumTitle, ReleaseDate, Price, Convert.ToInt32(StockAmount));
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
-        public void ShippingAddressMax()
+        public void AlbumTitleMax()
         {
             //create an instance of the class we want to create
-            clsOrders Order = new clsOrders();
+            clsStock Stock = new clsStock();
             //string variable to store any error message
             String Error = "";
             //create some test data to pass to the method
-            string ShippingAddress = "aaaaaa"; //this should be ok
+            string AlbumTitle = "aaaaaa"; //this should be ok
             //invoke the method
-            Error = Order.Valid(ShippingAddress, deliveryDate, productName, productQuantity);
+            Error = Stock.Valid(AlbumTitle, ReleaseDate, Price, Convert.ToInt32(StockAmount));
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
-        public void ShippingAddressMaxPlusOne()
+        public void AlbumTitleMaxPlusOne()
         {
             //create an instance of the class we want to create
-            clsOrders Order = new clsOrders();
+            clsStock Stock = new clsStock();
             //string variable to store any error message
             String Error = "";
             //this should fail
-            string ShippingAddress = "";
+            string AlbumTitle = "";
             //invoke the method
-            Error = Order.Valid(ShippingAddress, deliveryDate, productName, productQuantity);
+            Error = Stock.Valid(AlbumTitle, ReleaseDate, Price, Convert.ToInt32(StockAmount));
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
 
 
         [TestMethod]
-        public void ShippingAddressMid()
+        public void AlbumTitleMid()
         {
             //create an instance of the class we want to create
-            clsOrders Order = new clsOrders();
+            clsStock Stock = new clsStock();
             //string variable to store any error message
             String Error = "";
             //create some test data to pass to the method
-            string ShippingAddress = "aaa"; //this should be ok
+            string AlbumTitle = "aaa"; //this should be ok
             //invoke the method
-            Error = Order.Valid(ShippingAddress, deliveryDate, productName, productQuantity);
+            Error = Stock.Valid(AlbumTitle, ReleaseDate, Price, Convert.ToInt32(StockAmount));
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
-        public void ShippingAddressExtremeMax()
+        public void AlbumTitleExtremeMax()
         {
-            clsOrders Order = new clsOrders();
+            clsStock Stock = new clsStock();
             String Error = "";
-            string ShippingAddress = "";
-            ShippingAddress = ShippingAddress.PadRight(500, 'a');
-            Error = Order.Valid(ShippingAddress, deliveryDate, productName, productQuantity);
+            string albumTitle = "";
+            albumTitle = AlbumTitle.PadRight(500, 'a');
+            Error = Stock.Valid(albumTitle, ReleaseDate, Price, Convert.ToInt32(StockAmount));
             Assert.AreNotEqual(Error, "");
         }
-
+        
         [TestMethod]
-        public void ProductNameMinLessOne()
+        public void PriceMinLessOne()
         {
-            clsOrders Order = new clsOrders();
+            clsStock Stock = new clsStock();
             String Error = "";
-            string ProductName = "";
-            Error = Order.Valid(shippingAddress, deliveryDate, ProductName, productQuantity);
+            string price = "";
+            Error = Stock.Valid(AlbumTitle, ReleaseDate, price, Convert.ToInt32(StockAmount));
             Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
-        public void ProductNameMin()
+        public void PriceMin()
         {
             //create an instance of the class we want to create
-            clsOrders Order = new clsOrders();
+            clsStock Stock = new clsStock();
             //string variable to store any error message
             String Error = "";
             //create some test data to pass to the method
-            string ProductName = "a"; //this should be ok
+            string Price = "a"; //this should be ok
             //invoke the method
-            Error = Order.Valid(shippingAddress, deliveryDate, ProductName, productQuantity);
+            Error = Stock.Valid(AlbumTitle, ReleaseDate, Price, Convert.ToInt32(StockAmount));
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
-        public void ProductNameMinPlusOne()
+        public void PriceMinPlusOne()
         {
             //create an instance of the class we want to create
-            clsOrders Order = new clsOrders();
+            clsStock Stock = new clsStock();
             //string variable to store any error message
             String Error = "";
             //create some test data to pass to the method
-            string ProductName = "aa"; //this should be ok
-            //invoke the method
-            Error = Order.Valid(shippingAddress, deliveryDate, ProductName, productQuantity);
-            //test to see that the result is correct
-            Assert.AreEqual(Error, "");
-        }
-
-        [TestMethod]
-        public void ProductNameMaxLessOne()
-        {
-            //create an instance of the class we want to create
-            clsOrders Order = new clsOrders();
-            //string variable to store any error message
-            String Error = "";
-            //create some test data to pass to the method
-            string ProductName = "aaaaa"; //this should be ok
-            //invoke the method
-            Error = Order.Valid(shippingAddress, deliveryDate, ProductName, productQuantity);
-            //test to see that the result is correct
-            Assert.AreEqual(Error, "");
-        }
-        [TestMethod]
-        public void ProductNameMax()
-        {
-            //create an instance of the class we want to create
-            clsOrders Order = new clsOrders();
-            //string variable to store any error message
-            String Error = "";
-            //create some test data to pass to the method
-            string ProductName = "aaaaaa"; //this should be ok
-            //invoke the method
-            Error = Order.Valid(shippingAddress, deliveryDate, ProductName, productQuantity);
+            string Price = "aa"; //this should be ok
+                                 //invoke the method
+            Error = Stock.Valid(AlbumTitle, ReleaseDate, Price, Convert.ToInt32(StockAmount));
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
-        public void ProductNameMaxPlusOne()
+        public void PriceMaxLessOne()
         {
             //create an instance of the class we want to create
-            clsOrders Order = new clsOrders();
+            clsStock Stock = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Price = "aaaaa"; //this should be ok
+            //invoke the method
+            Error = Stock.Valid(AlbumTitle, ReleaseDate, Price, Convert.ToInt32(StockAmount));
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void PriceNameMax()
+        {
+            //create an instance of the class we want to create
+            clsStock Stock = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Price = "aaaaaa"; //this should be ok
+            //invoke the method
+            Error = Stock.Valid(AlbumTitle, ReleaseDate, Price, Convert.ToInt32(StockAmount));
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PriceMaxPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsStock Stock = new clsStock();
             //string variable to store any error message
             String Error = "";
             //this should fail
-            string ProductName = "";
+            string price = "";
             //invoke the method
-            Error = Order.Valid(shippingAddress, deliveryDate, ProductName, productQuantity);
+            Error = Stock.Valid(AlbumTitle, ReleaseDate, price, Convert.ToInt32(StockAmount));
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
 
         
         [TestMethod]
-        public void ProductNameMid()
+        public void PriceNameMid()
         {
             //create an instance of the class we want to create
-            clsOrders Order = new clsOrders();
+            clsStock Stock = new clsStock();
             //string variable to store any error message
             String Error = "";
             //create some test data to pass to the method
-            string ProductName = "aaa"; //this should be ok
+            string Price = "aaa"; //this should be ok
             //invoke the method
-            Error = Order.Valid(shippingAddress, deliveryDate, ProductName, productQuantity);
+            Error = Stock.Valid(AlbumTitle, ReleaseDate, Price, Convert.ToInt32(StockAmount));
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
-        public void ProductNameExtremeMax()
+        public void PriceExtremeMax()
         {
-            clsOrders Order = new clsOrders();
+            clsStock Stock = new clsStock();
             String Error = "";
-            string ProductName = "";
-            ProductName = ProductName.PadRight(500, 'a');
-            Error = Order.Valid(shippingAddress, deliveryDate, ProductName, productQuantity);
+            string price = "";
+            Price = Price.PadRight(500, 'a');
+            Error = Stock.Valid(AlbumTitle, ReleaseDate, price, Convert.ToInt32(StockAmount));
             Assert.AreNotEqual(Error, "");
         }
-        */
+        
     }
 }

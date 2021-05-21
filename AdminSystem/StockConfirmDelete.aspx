@@ -10,6 +10,11 @@
     <form id="form1" runat="server">
         <div>
         </div>
+        <asp:Label ID="Label1" runat="server" Text="Are you sure you want to delete this item of stock?"></asp:Label>
+        <p>
+            <asp:Button ID="btnConfirm" runat="server" OnClick="Button1_Click" Text="Confirm" />
+            <asp:Button ID="btnCancel" runat="server" Text="Cancel" OnClick="btnCancel_Click" />
+        </p>
     </form>
 </body>
 </html>
